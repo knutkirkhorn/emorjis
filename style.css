@@ -1,0 +1,30 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.main-container {
+  margin: 0 auto;
+  display: inline-block;
+}
+
+table {
+  font-size: 120%;
+  background-color: #f44141;
+  display: inline-block;
+}
+
+td {
+  width: 30px;
+  height: 28.5px;
+  border: 1px solid #ff919199;
+  text-align: center;
+}
+
+.bottom-drop-place {
+  box-shadow: 0px 0px 1px 1px white;
+}
+
+.score-menu {
+  display: inline-block;
+}
