@@ -2,11 +2,11 @@
 
 ## Installation
 Fork this project or download with ```git clone https://github.com/Knutakir/emorjis```
-Then navigate to src and run [index.html](***index.html***) in your webbrowser.
+Then navigate to the ***src*** folder and run [index.html](index.html) in your webbrowser.
 
 ## Documentation
-To understand how the variable tetrominoPosition receive different position and
-shapes from tPos, a little demonstration is shown below:
+To understand how the variable "tetrominoPosition" receive different position and
+shapes from "tPos", a little demonstration is shown below:
 
 ***Note***: "o" represents a emoji block and "x" represents where there is nothing.
 Only the "o"'s are in the code.
