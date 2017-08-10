@@ -13,43 +13,43 @@ Only the "o"'s are in the code.
 
 ### Stair (S)
 ```
-// ┌ x o o ┐     ┌ x o x ┐    ┌ x x x ┐    ┌ o x x ┐
-// | o o x | =>  | x o o | => | x o o | => | o o x |
-// └ x x x ┘     └ x x o ┘    └ o o x ┘    └ x o x ┘
+┌ x o o ┐     ┌ x o x ┐    ┌ x x x ┐    ┌ o x x ┐
+| o o x | =>  | x o o | => | x o o | => | o o x |
+└ x x x ┘     └ x x o ┘    └ o o x ┘    └ x o x ┘
 ```
 
 ### Stair (Z)
 ```
-// ┌ o o x ┐     ┌ x x o ┐    ┌ x x x ┐    ┌ x o x ┐
-// | x o o | =>  | x o o | => | o o x | => | o o x |
-// └ x x x ┘     └ x o x ┘    └ x o o ┘    └ o x x ┘
+┌ o o x ┐     ┌ x x o ┐    ┌ x x x ┐    ┌ x o x ┐
+| x o o | =>  | x o o | => | o o x | => | o o x |
+└ x x x ┘     └ x o x ┘    └ x o o ┘    └ o x x ┘
 ```
 
 ### Line (I)
 ```
-// ┌ o o o o ┐     ┌ x x x o ┐     ┌ x x x x ┐     ┌ o x x x ┐
-// | x x x x | =>  | x x x o | =>  | x x x x | =>  | o x x x |
-// | x x x x |     | x x x o |     | x x x x |     | o x x x |
-// └ x x x x ┘     └ x x x o ┘     └ o o o o ┘     └ o x x x ┘
+┌ o o o o ┐     ┌ x x x o ┐     ┌ x x x x ┐     ┌ o x x x ┐
+| x x x x | =>  | x x x o | =>  | x x x x | =>  | o x x x |
+| x x x x |     | x x x o |     | x x x x |     | o x x x |
+└ x x x x ┘     └ x x x o ┘     └ o o o o ┘     └ o x x x ┘
 ```
 
 ### Nail (T)
 ```
-// ┌ x o x ┐     ┌ x o x ┐    ┌ x x x ┐    ┌ x o x ┐
-// | o o o | =>  | x o o | => | o o o | => | o o x |
-// └ x x x ┘     └ x o x ┘    └ x o x ┘    └ x o x ┘
+┌ x o x ┐     ┌ x o x ┐    ┌ x x x ┐    ┌ x o x ┐
+| o o o | =>  | x o o | => | o o o | => | o o x |
+└ x x x ┘     └ x o x ┘    └ x o x ┘    └ x o x ┘
 ```
 
 ### Side-nail (L)
 ```
-// ┌ x o o ┐     ┌ x x x ┐    ┌ o x x ┐    ┌ o o o ┐
-// | x x o | =>  | x x o | => | o x x | => | o x x |
-// └ x x o ┘     └ o o o ┘    └ o o x ┘    └ x x x ┘
+┌ x o o ┐     ┌ x x x ┐    ┌ o x x ┐    ┌ o o o ┐
+| x x o | =>  | x x o | => | o x x | => | o x x |
+└ x x o ┘     └ o o o ┘    └ o o x ┘    └ x x x ┘
 ```
 
 ### Side-nail (J)
 ```
-// ┌ o o x ┐     ┌ o o o ┐    ┌ x x o ┐    ┌ x x x ┐
-// | o x x | =>  | x x o | => | x x o | => | o x x |
-// └ o x x ┘     └ x x x ┘    └ x o o ┘    └ o o o ┘
+┌ o o x ┐     ┌ o o o ┐    ┌ x x o ┐    ┌ x x x ┐
+| o x x | =>  | x x o | => | x x o | => | o x x |
+└ o x x ┘     └ x x x ┘    └ x o o ┘    └ o o o ┘
 ```
