@@ -1,7 +1,7 @@
 # emorjis
 
 ## Installation
-Fork this project or download with '''git clone https://github.com/Knutakir/emorjis'''
+Fork this project or download with ```git clone https://github.com/Knutakir/emorjis```
 Then navigate to src and run [index.html](***index.html***) in your webbrowser.
 
 ## Documentation
@@ -12,44 +12,44 @@ shapes from tPos, a little demonstration is shown below:
 Only the "o"'s are in the code.
 
 ### Stair (S)
-'''
+```
 // ┌ x o o ┐     ┌ x o x ┐    ┌ x x x ┐    ┌ o x x ┐
 // | o o x | =>  | x o o | => | x o o | => | o o x |
 // └ x x x ┘     └ x x o ┘    └ o o x ┘    └ x o x ┘
-'''
+```
 
 ### Stair (Z)
-'''
+```
 // ┌ o o x ┐     ┌ x x o ┐    ┌ x x x ┐    ┌ x o x ┐
 // | x o o | =>  | x o o | => | o o x | => | o o x |
 // └ x x x ┘     └ x o x ┘    └ x o o ┘    └ o x x ┘
-'''
+```
 
 ### Line (I)
-'''
+```
 // ┌ o o o o ┐     ┌ x x x o ┐     ┌ x x x x ┐     ┌ o x x x ┐
 // | x x x x | =>  | x x x o | =>  | x x x x | =>  | o x x x |
 // | x x x x |     | x x x o |     | x x x x |     | o x x x |
 // └ x x x x ┘     └ x x x o ┘     └ o o o o ┘     └ o x x x ┘
-'''
+```
 
 ### Nail (T)
-'''
+```
 // ┌ x o x ┐     ┌ x o x ┐    ┌ x x x ┐    ┌ x o x ┐
 // | o o o | =>  | x o o | => | o o o | => | o o x |
 // └ x x x ┘     └ x o x ┘    └ x o x ┘    └ x o x ┘
-'''
+```
 
 ### Side-nail (L)
-'''
+```
 // ┌ x o o ┐     ┌ x x x ┐    ┌ o x x ┐    ┌ o o o ┐
 // | x x o | =>  | x x o | => | o x x | => | o x x |
 // └ x x o ┘     └ o o o ┘    └ o o x ┘    └ x x x ┘
-'''
+```
 
 ### Side-nail (J)
-'''
+```
 // ┌ o o x ┐     ┌ o o o ┐    ┌ x x o ┐    ┌ x x x ┐
 // | o x x | =>  | x x o | => | x x o | => | o x x |
 // └ o x x ┘     └ x x x ┘    └ x o o ┘    └ o o o ┘
-'''
+```
