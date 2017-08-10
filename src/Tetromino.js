@@ -16,12 +16,16 @@ let currentTetrominoType = TETROMINO_TYPE.L;
 
 let matrixSize = 3;
 const maxBoardSize = 17;
+const defaultStartPosition = [0, 3];
+const maxEndRight = 9;
+const maxEndLeft = 0;
 
 //tetrominoPosition with [row, column], a definition of
 //where the tetromino starts
 let tPos = [0, 3];
-let tetrominoPositions = [[tPos[0], tPos[1]+1], [tPos[0], tPos[1]+2], [tPos[0]+1, tPos[1]+2], [tPos[0]+2, tPos[1]+2]];
 let tetrominoState = 1;
+let tetrominoPositions = [[tPos[0], tPos[1]+1], [tPos[0], tPos[1]+2], [tPos[0]+1, tPos[1]+2], [tPos[0]+2, tPos[1]+2]];
+
 
 class Tetromino {
   constructor(state) {
@@ -30,7 +34,7 @@ class Tetromino {
     } else {
       this.state = state;
     }
-    this.tetrominoType = this.generateRandomNextType();
+    currentTetrominoType = this.generateRandomNextType(); //this.tetrominoType
     this.reappearEmojies();
   }
 
@@ -45,14 +49,96 @@ class Tetromino {
     this.reappearEmojies();
   }
 
-  rotateTetromino() {
-    if (tetrominoState === 4) {
-      tetrominoState = 1;
-    } else {
-      tetrominoState++;
-    }
-
+  changeTetrominoPosition() {
     switch (currentTetrominoType) {
+      case TETROMINO_TYPE.O:
+        switch (tetrominoState) {
+          default:
+            //Because this tetromino is only one form regardless of rotation
+            tetrominoPositions = [[tPos[0], tPos[1]], [tPos[0], tPos[1]+1],
+                                  [tPos[0]+1, tPos[1]], [tPos[0]+1, tPos[1]+1]];
+        }
+        break;
+      case TETROMINO_TYPE.S:
+        switch (tetrominoState) {
+          case 1:
+            tetrominoPositions = [[tPos[0], tPos[1]+1], [tPos[0], tPos[1]+2],
+                                [tPos[0]+1, tPos[1]], [tPos[0]+1, tPos[1]+1]];
+            break;
+          case 2:
+            tetrominoPositions = [[tPos[0], tPos[1]+1], [tPos[0]+1, tPos[1]+1],
+                              [tPos[0]+1, tPos[1]+2], [tPos[0]+2, tPos[1]+2]];
+            break;
+          case 3:
+            tetrominoPositions = [[tPos[0]+1, tPos[1]+1], [tPos[0]+1, tPos[1]+2],
+                              [tPos[0]+2, tPos[1]], [tPos[0]+2, tPos[1]+1]];
+            break;
+          case 4:
+            tetrominoPositions = [[tPos[0], tPos[1]], [tPos[0]+1, tPos[1]],
+                              [tPos[0]+1, tPos[1]+1], [tPos[0]+2, tPos[1]+1]];
+            break;
+        }
+        break;
+      case TETROMINO_TYPE.Z:
+        switch (tetrominoState) {
+          case 1:
+            tetrominoPositions = [[tPos[0], tPos[1]], [tPos[0], tPos[1]+1],
+                                [tPos[0]+1, tPos[1]+1], [tPos[0]+1, tPos[1]+2]];
+            break;
+          case 2:
+            tetrominoPositions = [[tPos[0], tPos[1]+2], [tPos[0]+1, tPos[1]+1],
+                              [tPos[0]+1, tPos[1]+2], [tPos[0]+2, tPos[1]+1]];
+            break;
+          case 3:
+            tetrominoPositions = [[tPos[0]+1, tPos[1]], [tPos[0]+1, tPos[1]+1],
+                              [tPos[0]+2, tPos[1]+1], [tPos[0]+2, tPos[1]+2]];
+            break;
+          case 4:
+            tetrominoPositions = [[tPos[0], tPos[1]+1], [tPos[0]+1, tPos[1]],
+                              [tPos[0]+1, tPos[1]+1], [tPos[0]+2, tPos[1]]];
+            break;
+        }
+        break;
+      case TETROMINO_TYPE.I:
+        switch (tetrominoState) {
+          case 1:
+            tetrominoPositions = [[tPos[0], tPos[1]], [tPos[0], tPos[1]+1],
+                                [tPos[0], tPos[1]+2], [tPos[0], tPos[1]+3]];
+            break;
+          case 2:
+            tetrominoPositions = [[tPos[0], tPos[1]+3], [tPos[0]+1, tPos[1]+3],
+                              [tPos[0]+2, tPos[1]+3], [tPos[0]+3, tPos[1]+3]];
+            break;
+          case 3:
+            tetrominoPositions = [[tPos[0]+3, tPos[1]], [tPos[0]+3, tPos[1]+1],
+                              [tPos[0]+3, tPos[1]+2], [tPos[0]+3, tPos[1]+3]];
+            break;
+          case 4:
+            tetrominoPositions = [[tPos[0], tPos[1]], [tPos[0]+1, tPos[1]],
+                              [tPos[0]+2, tPos[1]], [tPos[0]+3, tPos[1]]];
+            break;
+        }
+        break;
+      case TETROMINO_TYPE.T:
+        switch (tetrominoState) {
+          case 1:
+            tetrominoPositions = [[tPos[0], tPos[1]+1], [tPos[0]+1, tPos[1]],
+                                [tPos[0]+1, tPos[1]+1], [tPos[0]+1, tPos[1]+2]];
+            break;
+          case 2:
+            tetrominoPositions = [[tPos[0], tPos[1]+1], [tPos[0]+1, tPos[1]+1],
+                              [tPos[0]+1, tPos[1]+2], [tPos[0]+2, tPos[1]+1]];
+            break;
+          case 3:
+            tetrominoPositions = [[tPos[0]+1, tPos[1]], [tPos[0]+1, tPos[1]+1],
+                              [tPos[0]+1, tPos[1]+2], [tPos[0]+2, tPos[1]+1]];
+            break;
+          case 4:
+            tetrominoPositions = [[tPos[0], tPos[1]+1], [tPos[0]+1, tPos[1]],
+                              [tPos[0]+1, tPos[1]+1], [tPos[0]+2, tPos[1]+1]];
+            break;
+        }
+        break;
       case TETROMINO_TYPE.L:
         switch (tetrominoState) {
           case 1:
@@ -73,7 +159,39 @@ class Tetromino {
             break;
         }
         break;
+      case TETROMINO_TYPE.J:
+        switch (tetrominoState) {
+          case 1:
+            tetrominoPositions = [[tPos[0], tPos[1]], [tPos[0], tPos[1]+1],
+                                  [tPos[0]+1, tPos[1]], [tPos[0]+2, tPos[1]]];
+            break;
+          case 2:
+            tetrominoPositions = [[tPos[0], tPos[1]], [tPos[0], tPos[1]+1],
+                                  [tPos[0], tPos[1]+2], [tPos[0]+1, tPos[1]+2]];
+            break;
+          case 3:
+            tetrominoPositions = [[tPos[0], tPos[1]+2], [tPos[0]+1, tPos[1]+2],
+                                  [tPos[0]+2, tPos[1]+1], [tPos[0]+2, tPos[1]+2]];
+            break;
+          case 4:
+            tetrominoPositions = [[tPos[0]+1, tPos[1]], [tPos[0]+2, tPos[1]],
+                                  [tPos[0]+2, tPos[1]+1], [tPos[0]+2, tPos[1]+2]];
+            break;
+        }
+      default:
+
+        break;
     }
+  }
+
+  rotateTetromino() {
+    if (tetrominoState === 4) {
+      tetrominoState = 1;
+    } else {
+      tetrominoState++;
+    }
+
+    this.changeTetrominoPosition();
 
     let blocked = false;
     for (let i = 0; i < tetrominoPositions.length; i++) {
@@ -90,25 +208,7 @@ class Tetromino {
 
     if (blocked) {
       tetrominoState--;
-    }
-
-    switch (currentTetrominoType) {
-      case TETROMINO_TYPE.L:
-        switch (tetrominoState) {
-          case 1:
-            tetrominoPositions = [[tPos[0], tPos[1]+1], [tPos[0], tPos[1]+2], [tPos[0]+1, tPos[1]+2], [tPos[0]+2, tPos[1]+2]];
-            break;
-          case 2:
-            tetrominoPositions = [[tPos[0]+1, tPos[1]+2], [tPos[0]+2, tPos[1]], [tPos[0]+2, tPos[1]+1], [tPos[0]+2, tPos[1]+2]];
-            break;
-          case 3:
-            tetrominoPositions = [[tPos[0], tPos[1]], [tPos[0]+1, tPos[1]], [tPos[0]+2, tPos[1]], [tPos[0]+2, tPos[1]+1]];
-            break;
-          case 4:
-            tetrominoPositions = [[tPos[0], tPos[1]], [tPos[0], tPos[1]+1], [tPos[0], tPos[1]+2], [tPos[0]+1, tPos[1]]];
-            break;
-        }
-        break;
+      this.changeTetrominoPosition();
     }
 
     Util.removeCurrentEmojies();
@@ -179,29 +279,8 @@ class Tetromino {
   }
 
   generateRandomNextType() {
-    const randomNumber = Math.floor((Math.random() * TETROMINO_TYPE_SIZE) + 1);
-
-    switch (randomNumber) {
-      case TETROMINO_TYPE.O:
-
-        break;
-
-      case TETROMINO_TYPE.S:
-
-        break;
-
-      case TETROMINO_TYPE.Z:
-
-        break;
-
-      case TETROMINO_TYPE.L:
-
-        break;
-      default:
-
-    }
-
-    return TETROMINO_TYPE.L;
+    const randomNumber = Math.floor((Math.random() * TETROMINO_TYPE_SIZE));
+    return randomNumber;
   }
 
   nextTetromino() {
@@ -222,8 +301,11 @@ class Tetromino {
     currentEmojiType = EMOJIES[randomEmojiNumber];
 
     //Add and start new brick
-    tPos = [0, 3];
-    tetrominoPositions = [[tPos[0], tPos[1]+1], [tPos[0], tPos[1]+2], [tPos[0]+1, tPos[1]+2], [tPos[0]+2, tPos[1]+2]];
+    tPos[0] = defaultStartPosition[0];
+    tPos[1] = defaultStartPosition[1];
+
+    currentTetrominoType = this.generateRandomNextType();
+    this.changeTetrominoPosition();
     this.reappearEmojies();
   }
 
@@ -249,9 +331,9 @@ class Tetromino {
     let isAtEnd = false;
     let endPosition;
     if (toRight) {
-      endPosition = 9;
+      endPosition = maxEndRight;
     } else {
-      endPosition = 0;
+      endPosition = maxEndLeft;
     }
 
     for (let i = 0; i < tetrominoPositions.length; i++) {
