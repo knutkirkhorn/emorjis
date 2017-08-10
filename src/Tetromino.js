@@ -10,31 +10,28 @@ const TETROMINO_TYPE = {
 };
 const EMOJIES_SIZE = 5;
 const EMOJIES = ['😂', '🐶', '🔥', '🚪', '🍂'];
-
-let currentEmojiType = '😂';
-let currentTetrominoType = TETROMINO_TYPE.L;
-
-let matrixSize = 3;
 const maxBoardSize = 17;
 const defaultStartPosition = [0, 3];
 const maxEndRight = 9;
 const maxEndLeft = 0;
 
+let currentEmojiType = '😂';
+let currentTetrominoType;
 //tetrominoPosition with [row, column], a definition of
 //where the tetromino starts
 let tPos = [0, 3];
-let tetrominoState = 1;
-let tetrominoPositions = [[tPos[0], tPos[1]+1], [tPos[0], tPos[1]+2], [tPos[0]+1, tPos[1]+2], [tPos[0]+2, tPos[1]+2]];
-
+let tetrominoState;
+let tetrominoPositions;
 
 class Tetromino {
   constructor(state) {
     if (state === undefined) {
-      this.state = 1;
+      tetrominoState = 1;
     } else {
-      this.state = state;
+      tetrominoState = state;
     }
-    currentTetrominoType = this.generateRandomNextType(); //this.tetrominoType
+    currentTetrominoType = this.generateRandomNextType();
+    this.changeTetrominoPosition();
     this.reappearEmojies();
   }
 
@@ -178,9 +175,6 @@ class Tetromino {
                                   [tPos[0]+2, tPos[1]+1], [tPos[0]+2, tPos[1]+2]];
             break;
         }
-      default:
-
-        break;
     }
   }
 
@@ -248,38 +242,8 @@ class Tetromino {
     }
   }
 
-  moveAllWayDown() {
-    let tempTetrominoPositions = Util.copy2dArray(tetrominoPositions);
-    let notFoundBottom = true;
-
-    for (let i = 0; i < 15; i++) {
-      let tempTetrominoPositions2 = Util.copy2dArray(tempTetrominoPositions);
-
-      for (let j = 0; j < tempTetrominoPositions2.length; j++) {
-        tempTetrominoPositions2[j][0]++;
-        const column = tempTetrominoPositions2[j][1] + 1;
-        const row = tempTetrominoPositions2[j][0] + 1;
-        const tableCell = Util.getTableCell(row, column);
-
-        if (tableCell.attr('class') === undefined ||
-            tableCell.hasClass("occupied-cell")) {
-          notFoundBottom = false;
-        }
-      }
-
-      if (notFoundBottom) {
-        tempTetrominoPositions = Util.copy2dArray(tempTetrominoPositions2);
-      }
-    }
-    tetrominoPositions = Util.copy2dArray(tempTetrominoPositions);
-
-    Util.removeCurrentEmojies();
-    this.reappearEmojies();
-    this.nextTetromino();
-  }
-
   generateRandomNextType() {
-    const randomNumber = Math.floor((Math.random() * TETROMINO_TYPE_SIZE));
+    const randomNumber = Math.floor(Math.random() * TETROMINO_TYPE_SIZE);
     return randomNumber;
   }
 
@@ -373,5 +337,35 @@ class Tetromino {
       Util.removeCurrentEmojies();
       this.reappearEmojies();
     }
+  }
+
+  moveAllWayDown() {
+    let tempTetrominoPositions = Util.copy2dArray(tetrominoPositions);
+    let notFoundBottom = true;
+
+    for (let i = 0; i < 15; i++) {
+      let tempTetrominoPositions2 = Util.copy2dArray(tempTetrominoPositions);
+
+      for (let j = 0; j < tempTetrominoPositions2.length; j++) {
+        tempTetrominoPositions2[j][0]++;
+        const column = tempTetrominoPositions2[j][1] + 1;
+        const row = tempTetrominoPositions2[j][0] + 1;
+        const tableCell = Util.getTableCell(row, column);
+
+        if (tableCell.attr('class') === undefined ||
+            tableCell.hasClass("occupied-cell")) {
+          notFoundBottom = false;
+        }
+      }
+
+      if (notFoundBottom) {
+        tempTetrominoPositions = Util.copy2dArray(tempTetrominoPositions2);
+      }
+    }
+    tetrominoPositions = Util.copy2dArray(tempTetrominoPositions);
+
+    Util.removeCurrentEmojies();
+    this.reappearEmojies();
+    this.nextTetromino();
   }
 }

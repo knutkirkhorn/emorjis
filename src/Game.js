@@ -6,6 +6,7 @@ const GAME_STATE = {
 }
 const BOARD_HEIGHT = 17;
 const BOARD_WIDTH = 10;
+const DEFAULT_GAME_SPEED = 1000;
 
 let currentGameState = GAME_STATE.RUNNING;
 let gameArray = [];
@@ -24,10 +25,7 @@ class Game {
 
   startGame() {
     currentGameState = GAME_STATE.STARTED;
-    /*setInterval(function() {
-      this.tickClock()
-    }, 1000);*/
-    setInterval(this.tickClock, 1000);
+    setInterval(this.tickClock, DEFAULT_GAME_SPEED);
   }
 
   stopGame() {
