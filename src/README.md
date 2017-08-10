@@ -11,6 +11,12 @@ shapes from tPos, a little demonstration is shown below:
 ***Note***: "o" represents a emoji block and "x" represents where there is nothing.
 Only the "o"'s are in the code.
 
+### Square (O)
+```
+┌ o o ┐
+└ o o ┘
+```
+
 ### Stair (S)
 ```
 ┌ x o o ┐     ┌ x o x ┐    ┌ x x x ┐    ┌ o x x ┐
