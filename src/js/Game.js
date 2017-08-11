@@ -21,6 +21,7 @@ class Game {
     this.generateGameBoard();
     this.generateGameArray();
     currentTetromino = new Tetromino();
+    currentTetromino.gameArray = gameArray;
   }
 
   startGame() {
@@ -71,32 +72,15 @@ class Game {
 
   tickClock() {
     if (Game.checkIfOnBottomOrOccupied()) {
-      currentTetromino.nextTetromino();
+      currentTetromino.nextTetromino(gameArray);
     } else {
       currentTetromino.moveDown();
     }
   }
 
-  checkIfRowFull() {
-    const cellsInOneRow = gameArray[0].length;
-
-    for (let i = 0; i < gameArray.length; i++) {
-      let fullCellsInRow = 0;
-      for (let j = 0; j < 10; j++) {
-        /*if () {
-          fullCellsInRow++;
-        }*/
-      }
-
-      if (fullCellsInRow === 10) {
-        //TODO: REMOVE and drop rows over;
-      }
-    }
-  }
-
   generateGameArray() {
-    for (let i = 0; i < 17; i++) {
-      gameArray.push([], [], [], []);
+    for (let i = 0; i < BOARD_HEIGHT; i++) {
+      gameArray.push([-1, -1, -1, -1, -1, -1, -1, -1, -1, -1]);
     }
   }
 

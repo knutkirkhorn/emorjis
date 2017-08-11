@@ -184,7 +184,6 @@ class Tetromino {
     } else {
       tetrominoState++;
     }
-
     this.changeTetrominoPosition();
 
     let blocked = false;
@@ -251,7 +250,7 @@ class Tetromino {
     for (let i = 0; i < tetrominoPositions.length; i++) {
       const row = tetrominoPositions[i][0];
       const column = tetrominoPositions[i][1];
-      gameArray[row][column] = currentTetrominoType;
+      gameArray[row][column] = EMOJIES.indexOf(currentEmojiType);
     }
 
     $(".current-tetromino").each(function() {
@@ -261,6 +260,8 @@ class Tetromino {
         .removeClass("empty-cell");
     });
 
+    this.checkIfRowFull();
+
     const randomEmojiNumber = Math.floor((Math.random() * EMOJIES_SIZE));
     currentEmojiType = EMOJIES[randomEmojiNumber];
 
@@ -268,29 +269,70 @@ class Tetromino {
     tPos[0] = defaultStartPosition[0];
     tPos[1] = defaultStartPosition[1];
 
-    currentTetrominoType = this.generateRandomNextType();
+    currentTetrominoType = TETROMINO_TYPE.O;//this.generateRandomNextType();
     this.changeTetrominoPosition();
     this.reappearEmojies();
   }
 
+  checkIfRowFull() {
+    const cellsInOneRow = gameArray[0].length;
+    let rowsToDelete = [];
+
+    for (let i = 0; i < gameArray.length; i++) {
+      let fullCellsInRow = 0;
+      for (let j = 0; j < 10; j++) {
+        if (gameArray[i][j] >= 0) {
+          fullCellsInRow++;
+        }
+      }
+
+      if (fullCellsInRow === 10) {
+        rowsToDelete.push(i);
+      }
+    }
+
+    for (let i = 0; i < rowsToDelete.length; i++) {
+      console.log("Fjerner:" + rowsToDelete[i] + ": "+ gameArray[rowsToDelete[i]]);
+      gameArray.splice(rowsToDelete[i], 1);
+      gameArray = [[-1, -1, -1, -1, -1, -1, -1, -1, -1, -1],...gameArray];
+    }
+
+    console.log(gameArray);
+  }
+
   reappearEmojies() {
+    $(".bottom-drop-place").each(function() {
+      $(this).removeClass("bottom-drop-place");
+    });
+
+    $(".occupied-cell").each(function() {
+      $(this).removeClass("occupied-cell").html("").addClass("empty-cell");
+    });
+
+    for (let i = 0; i < gameArray.length; i++) {
+      for (let j = 0; j < gameArray[i].length; j++) {
+        const currentValue = gameArray[i][j];
+        if (currentValue >= 0) {
+          //Add emoji to table
+          Util.getTableCell(i+1, j+1).addClass("occupied-cell").html(EMOJIES[currentValue]);
+        }
+      }
+    }
+
     for (let i = 0; i < tetrominoPositions.length; i++) {
       const row = tetrominoPositions[i][0] + 1;
       const column = tetrominoPositions[i][1] + 1;
 
-      $(".bottom-drop-place").each(function() {
-        $(this).removeClass("bottom-drop-place");
-      });
-
       Util.getTableCell(row, column)
         .addClass("current-tetromino")
         .html(currentEmojiType);
+      gameArray[row-1][column-1] = -2;
     }
-
     this.makeDropFocus();
   }
 
   moveHorizontal(toRight) {
+    //TODO: console.log(gameArray);
     //Check if most left or right
     let isAtEnd = false;
     let endPosition;
@@ -317,11 +359,10 @@ class Tetromino {
           isAtEnd = true;
         }
       }
-
     });
 
     if (!isAtEnd) {
-      //move table
+      //move tetromino right/left
       if (toRight) {
         tPos[1]++;
         for (let i = 0; i < tetrominoPositions.length; i++) {
