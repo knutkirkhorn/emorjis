@@ -8,7 +8,7 @@ All game files are found in [src](src).
 
 A little preview image of emorjis
 
-## Controller
+## Controls
 * <kbd>←</kbd> to navigate left and <kbd>→</kbd> to navigate right.
 * <kbd>↑</kbd> to rotate the tetromino clockwise.
 * <kbd>↓</kbd> to move tetromino faster.
