@@ -11,6 +11,7 @@ A little preview image of emorjis
 ## Controller
 * <kbd>←</kbd> to navigate left and <kbd>→</kbd> to navigate right.
 * <kbd>↑</kbd> to rotate the tetromino clockwise.
+* <kbd>↓</kbd> to move tetromino faster.
 * <kbd>Space</kbd> to drop the tetromino all the way down.
 
 ## Documentation
