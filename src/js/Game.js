@@ -7,10 +7,12 @@ const GAME_STATE = {
 const BOARD_HEIGHT = 17;
 const BOARD_WIDTH = 10;
 const DEFAULT_GAME_SPEED = 1000;
+const FAST_GAME_SPEED = 500;
 
 let currentGameState = GAME_STATE.RUNNING;
 let gameArray = [];
 let currentTetromino;
+let intervalClock;
 
 class Game {
   constructor() {
@@ -26,7 +28,7 @@ class Game {
 
   startGame() {
     currentGameState = GAME_STATE.STARTED;
-    setInterval(this.tickClock, DEFAULT_GAME_SPEED);
+    intervalClock = setInterval(this.tickClock, DEFAULT_GAME_SPEED);
   }
 
   stopGame() {
@@ -72,7 +74,7 @@ class Game {
 
   tickClock() {
     if (Game.checkIfOnBottomOrOccupied()) {
-      currentTetromino.nextTetromino(gameArray);
+      currentTetromino.nextTetromino();
     } else {
       currentTetromino.moveDown();
     }
@@ -90,6 +92,16 @@ class Game {
 
   moveRight() {
     currentTetromino.moveHorizontal(true);
+  }
+
+  moveNormal() {
+    clearInterval(intervalClock);
+    intervalClock = setInterval(this.tickClock, DEFAULT_GAME_SPEED);
+  }
+
+  moveFaster() {
+    clearInterval(intervalClock);
+    intervalClock = setInterval(this.tickClock, FAST_GAME_SPEED);
   }
 
   rotateTetromino() {

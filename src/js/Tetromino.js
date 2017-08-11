@@ -269,7 +269,7 @@ class Tetromino {
     tPos[0] = defaultStartPosition[0];
     tPos[1] = defaultStartPosition[1];
 
-    currentTetrominoType = TETROMINO_TYPE.O;//this.generateRandomNextType();
+    currentTetrominoType = this.generateRandomNextType();
     this.changeTetrominoPosition();
     this.reappearEmojies();
   }

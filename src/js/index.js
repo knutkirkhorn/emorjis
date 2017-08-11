@@ -5,6 +5,8 @@ $(document).ready(function() {
     game.startGame();
   });
 
+  let isFastSpeed = false;
+
   $("body").keypress(function(e) {
     //Spacebar key pressed
     if (e.which === 32) {
@@ -30,8 +32,18 @@ $(document).ready(function() {
         break;
       case 40:
         //Down key pressed
-        //TODO: faster down speed
+        if (!isFastSpeed) {
+          isFastSpeed = true;
+          game.moveFaster();
+        }
         break;
+    }
+  }).keyup(function(e) {
+    if (e.keyCode === 40) {
+      if (isFastSpeed) {
+        isFastSpeed = false;
+        game.moveNormal();
+      }
     }
   });
 });
