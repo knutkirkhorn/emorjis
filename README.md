@@ -11,7 +11,7 @@ Then run ```npm start```.
 
 Or if you dont want
 an express server for the game, then navigate to the ***src***
-folder and run [index.html](index.html) in your webbrowser.
+folder and run [index.html](src/index.html) in your webbrowser.
 
 ## Screenshot
 ![Preview](preview.png)
