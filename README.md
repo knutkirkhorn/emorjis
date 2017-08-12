@@ -3,6 +3,16 @@ Emoji Tetris 😎 made with javascript
 
 All game files are found in [src](src).
 
+## Installation
+Fork this repository or download
+with: ```git clone https://github.com/Knutakir/emorjis```
+
+Then run ```npm start```.
+
+Or if you dont want
+an express server for the game, then navigate to the ***src***
+folder and run [index.html](index.html) in your webbrowser.
+
 ## Screenshot
 ![Preview](preview.png)
 

@@ -1,8 +1,7 @@
 # emorjis
 
 ## Installation
-Fork this project or download with ```git clone https://github.com/Knutakir/emorjis```
-Then navigate to the ***src*** folder and run [index.html](index.html) in your webbrowser.
+See Installation in [README.md](../README.md#Installation).
 
 ## Documentation
 To understand how the variable "tetrominoPosition" receive different position and
