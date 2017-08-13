@@ -1,4 +1,4 @@
-# emorjis
+# emorjis [![Build Status](https://travis-ci.org/Knutakir/emorjis.svg?branch=master)](https://travis-ci.org/Knutakir/emorjis)
 Emoji Tetris 😎 made with javascript
 
 All game files are found in [src](src).
