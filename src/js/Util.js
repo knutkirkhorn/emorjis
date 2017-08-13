@@ -1,3 +1,4 @@
+//module.exports =
 class Util {
   static copy2dArray(inputArray) {
     let newArray = new Array(inputArray.length);
@@ -25,3 +26,6 @@ class Util {
     return $("tr:nth-child(" + row + ") td:nth-child(" + column + ")");
   }
 }
+
+//TOOD: fix this so no error is displayed in the console when running
+module.exports.copy2dArray = (inputArray) => Util.copy2dArray(inputArray);
