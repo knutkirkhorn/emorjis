@@ -1,11 +1,5 @@
 import test from 'ava';
-import game from './src/js/Game';
-import tetromino from './src/js/Tetromino'
-import util from './src/js/Util';
-
-test('foo', t => {
-  t.pass();
-});
+import Util from './src/js/Util';
 
 const arrayToCopy = [];
 for (let i = 0; i < 5; i++) {
@@ -13,9 +7,7 @@ for (let i = 0; i < 5; i++) {
 }
 
 test(t => {
-  const newArray = Util.copy2dArray(copy2dArray);
-  t.deepEqual(newArray, arrayToCopy, 'yay');
+  const newArray = Util.copy2dArray(arrayToCopy);
+  t.deepEqual(newArray, arrayToCopy);
   t.pass();
 });
-
-//test()
