@@ -47,7 +47,7 @@ class Game {
     gridRow += "</tr>";
 
     for (let i = 0; i < BOARD_HEIGHT; i++) {
-      $("tbody").append(gridRow);
+      $("#game-board").append(gridRow);
     }
   }
 

@@ -12,13 +12,24 @@
   </head>
   <body>
     <div class="main-container">
-      <table>
+      <table id="game-board">
         <tbody>
           <!-- Game board is generated here -->
         </tbody>
       </table>
       <div class="score-container">
-        <!-- Next shape, score-->
+        <div class="next-tetromino-container">
+          <span>Next tetromino: </span>
+          <table id="next-tetromino">
+            <tbody>
+              <!-- Next tetromino shape is generated here -->
+            </tbody>
+          </table>
+        </div>
+        <div class="score-container">
+          <span>Current score: </span>
+          <span id="current-score">0</span>
+        </div>
       </div>
     </div>
 

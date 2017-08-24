@@ -15,7 +15,7 @@ const defaultStartPosition = [0, 3];
 const maxEndRight = 9;
 const maxEndLeft = 0;
 
-let currentEmojiType = '😂';
+let currentEmojiType;
 let currentTetrominoType;
 //tetrominoPosition with [row, column], a definition of
 //where the tetromino starts
@@ -30,6 +30,7 @@ class Tetromino {
     } else {
       tetrominoState = state;
     }
+    currentEmojiType = EMOJIES[this.generateRandomEmoji()];
     currentTetrominoType = this.generateRandomNextType();
     this.changeTetrominoPosition();
     this.reappearEmojies();
@@ -246,6 +247,11 @@ class Tetromino {
     return randomNumber;
   }
 
+  generateRandomEmoji() {
+    const randomEmojiNumber = Math.floor((Math.random() * EMOJIES_SIZE));
+    return randomEmojiNumber;
+  }
+
   nextTetromino() {
     for (let i = 0; i < tetrominoPositions.length; i++) {
       const row = tetrominoPositions[i][0];
@@ -262,8 +268,7 @@ class Tetromino {
 
     this.checkIfRowFull();
 
-    const randomEmojiNumber = Math.floor((Math.random() * EMOJIES_SIZE));
-    currentEmojiType = EMOJIES[randomEmojiNumber];
+    currentEmojiType = EMOJIES[generateRandomEmoji()];
 
     //Add and start new brick
     tPos[0] = defaultStartPosition[0];
