@@ -9,13 +9,13 @@ body {
   display: inline-block;
 }
 
-table {
+#game-board {
   font-size: 120%;
   background-color: #f44141;
   display: inline-block;
 }
 
-td {
+#game-board td {
   width: 30px;
   height: 28.5px;
   border: 1px solid #ff919199;
@@ -28,4 +28,20 @@ td {
 
 .score-menu {
   display: inline-block;
+}
+
+.red-button {
+  background-color: white;
+  border: 1px solid #f44141;
+  border-radius: 25px;
+  font-size: 115%;
+  padding: 10px;
+  color: #f44141;
+  transition: ease-in-out 0.2s;
+}
+
+.red-button:hover {
+  background-color: #f44141;
+  cursor: pointer;
+  color: white;
 }
