@@ -1,12 +1,15 @@
+DROP TABLE IF EXISTS Highscore;
+DROP TABLE IF EXISTS Users;
+
 CREATE TABLE Users(
-  user_id AUTO_INCREMENT NOT NULL,
+  user_id INTEGER AUTO_INCREMENT,
   name VARCHAR(16) NOT NULL,
   password VARCHAR(50) NOT NULL,
-  PRIMARY KEY(id)
+  PRIMARY KEY(user_id)
 );
 
 CREATE TABLE Highscore(
-  score_id AUTO_INCREMENT NOT NULL,
+  score_id INTEGER AUTO_INCREMENT,
   score INTEGER,
   user_id INTEGER,
   PRIMARY KEY(score_id),

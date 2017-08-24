@@ -268,7 +268,7 @@ class Tetromino {
 
     this.checkIfRowFull();
 
-    currentEmojiType = EMOJIES[generateRandomEmoji()];
+    currentEmojiType = EMOJIES[this.generateRandomEmoji()];
 
     //Add and start new brick
     tPos[0] = defaultStartPosition[0];
