@@ -23,6 +23,7 @@ A little preview image of emorjis
 * <kbd>↑</kbd> to rotate the tetromino clockwise.
 * <kbd>↓</kbd> to move tetromino faster.
 * <kbd>Space</kbd> to drop the tetromino all the way down.
+* <kbd>Escape</kbd> to pause the game, a menu/modal will appear.
 
 ## Documentation
 See [src/README.md](src/README.md) for a explenation of some of the code.
