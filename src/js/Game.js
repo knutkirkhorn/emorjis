@@ -23,6 +23,7 @@ class Game {
   initializeGame() {
     this.generateGameBoard();
     this.generateGameArray();
+    this.generateNextTetrominoBoard();
     currentTetromino = new Tetromino(currentGameScore);
     currentTetromino.gameArray = gameArray;
   }
@@ -65,6 +66,18 @@ class Game {
 
     for (let i = 0; i < BOARD_HEIGHT; i++) {
       $("#game-board").append(gridRow);
+    }
+  }
+
+  generateNextTetrominoBoard() {
+    let gridRow = "<tr>";
+    for (let i = 0; i < 4; i++) {
+      gridRow += '<td class="empty-cell"></td>';
+    }
+    gridRow += "</td>";
+
+    for (let i = 0; i < 4; i++) {
+      $("#next-tetromino").append(gridRow);
     }
   }
 

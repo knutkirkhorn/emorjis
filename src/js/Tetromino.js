@@ -19,6 +19,8 @@ const clearRowScore = 100;
 
 let currentEmojiType;
 let currentTetrominoType;
+let nextEmojiType;
+let nextTetrominoType;
 //tPos = tetrominoPosition with [row, column], a definition of
 //where the tetromino starts
 let tPos = [0, 3];
@@ -31,6 +33,8 @@ class Tetromino {
     tetrominoState = 1;
     currentEmojiType = EMOJIES[this.generateRandomEmoji()];
     currentTetrominoType = this.generateRandomNextType();
+    nextEmojiType = EMOJIES[this.generateRandomEmoji()];
+    nextTetrominoType = this.generateRandomNextType();
     this.changeTetrominoPosition();
     this.reappearEmojies();
   }
@@ -284,13 +288,15 @@ class Tetromino {
 
     this.checkIfRowFull();
 
-    currentEmojiType = EMOJIES[this.generateRandomEmoji()];
+    currentEmojiType = nextEmojiType;
+    nextEmojiType = EMOJIES[this.generateRandomEmoji()];
 
     //Add and start new brick
     tPos[0] = defaultStartPosition[0];
     tPos[1] = defaultStartPosition[1];
 
-    currentTetrominoType = this.generateRandomNextType();
+    currentTetrominoType = nextTetrominoType;
+    nextTetrominoType = this.generateRandomNextType();
     this.changeTetrominoPosition();
     this.reappearEmojies();
   }
@@ -351,6 +357,50 @@ class Tetromino {
     this.makeDropFocus();
 
     $("#current-score").text(gameScore);
+
+    let nextPositions = this.getNextTetrominoPositions();
+    for (let i = 0; i < nextPositions.length; i++) {
+      
+    }
+    $("#next-tetromino").html(nextEmojiType);
+  }
+
+  getNextTetrominoPositions() {
+    let nextTetrominoPositions;
+
+    switch (nextTetrominoType) {
+      case TETROMINO_TYPE.O:
+        //Because this tetromino is only one form regardless of rotation
+        nextTetrominoPositions = [[tPos[0], tPos[1]], [tPos[0], tPos[1]+1],
+                            [tPos[0]+1, tPos[1]], [tPos[0]+1, tPos[1]+1]];
+        break;
+      case TETROMINO_TYPE.S:
+        nextTetrominoPositions = [[tPos[0], tPos[1]+1], [tPos[0], tPos[1]+2],
+                            [tPos[0]+1, tPos[1]], [tPos[0]+1, tPos[1]+1]];
+
+        break;
+      case TETROMINO_TYPE.Z:
+        nextTetrominoPositions = [[tPos[0], tPos[1]], [tPos[0], tPos[1]+1],
+                            [tPos[0]+1, tPos[1]+1], [tPos[0]+1, tPos[1]+2]];
+        break;
+      case TETROMINO_TYPE.I:
+        nextTetrominoPositions = [[tPos[0], tPos[1]], [tPos[0], tPos[1]+1],
+                            [tPos[0], tPos[1]+2], [tPos[0], tPos[1]+3]];
+        break;
+      case TETROMINO_TYPE.T:
+        nextTetrominoPositions = [[tPos[0], tPos[1]+1], [tPos[0]+1, tPos[1]],
+                            [tPos[0]+1, tPos[1]+1], [tPos[0]+1, tPos[1]+2]];
+            break;
+      case TETROMINO_TYPE.L:
+          nextTetrominoPositions = [[tPos[0], tPos[1]+1], [tPos[0], tPos[1]+2],
+                            [tPos[0]+1, tPos[1]+2], [tPos[0]+2, tPos[1]+2]];
+          break;
+      case TETROMINO_TYPE.J:
+        nextTetrominoPositions = [[tPos[0], tPos[1]], [tPos[0], tPos[1]+1],
+                            [tPos[0]+1, tPos[1]], [tPos[0]+2, tPos[1]]];
+        break;
+    }
+    return nextTetrominoPositions;
   }
 
   moveHorizontal(toRight) {
@@ -431,7 +481,6 @@ class Tetromino {
     }
     tetrominoPositions = Util.copy2dArray(tempTetrominoPositions);
 
-    console.log(scoreMultiplier);
     gameScore += scoreMultiplier * 10;
 
     Util.removeCurrentEmojies();
