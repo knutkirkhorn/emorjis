@@ -14,6 +14,8 @@ const maxBoardSize = 17;
 const defaultStartPosition = [0, 3];
 const maxEndRight = 9;
 const maxEndLeft = 0;
+const defaultScore = 10;
+const clearRowScore = 100;
 
 let currentEmojiType;
 let currentTetrominoType;
@@ -314,6 +316,8 @@ class Tetromino {
       gameArray.splice(rowsToDelete[i], 1);
       gameArray = [[-1, -1, -1, -1, -1, -1, -1, -1, -1, -1],...gameArray];
     }
+
+    gameScore += clearRowScore * rowsToDelete.length;
   }
 
   reappearEmojies() {
@@ -401,7 +405,7 @@ class Tetromino {
   moveAllWayDown() {
     let tempTetrominoPositions = Util.copy2dArray(tetrominoPositions);
     let notFoundBottom = true;
-    let scoreMultiplier = 0;
+    let scoreMultiplier = 15;
 
     for (let i = 0; i < 15; i++) {
       let tempTetrominoPositions2 = Util.copy2dArray(tempTetrominoPositions);
@@ -415,7 +419,9 @@ class Tetromino {
         if (tableCell.attr('class') === undefined ||
             tableCell.hasClass("occupied-cell")) {
           notFoundBottom = false;
-          scoreMultiplier = i;
+          if (scoreMultiplier === 15) {
+            scoreMultiplier = i;
+          }
         }
       }
 
