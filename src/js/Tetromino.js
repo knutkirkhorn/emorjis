@@ -17,19 +17,16 @@ const maxEndLeft = 0;
 
 let currentEmojiType;
 let currentTetrominoType;
-//tetrominoPosition with [row, column], a definition of
+//tPos = tetrominoPosition with [row, column], a definition of
 //where the tetromino starts
 let tPos = [0, 3];
 let tetrominoState;
 let tetrominoPositions;
+let gameScore = 0;
 
 class Tetromino {
-  constructor(state) {
-    if (state === undefined) {
-      tetrominoState = 1;
-    } else {
-      tetrominoState = state;
-    }
+  constructor(gameScore) {
+    tetrominoState = 1;
     currentEmojiType = EMOJIES[this.generateRandomEmoji()];
     currentTetrominoType = this.generateRandomNextType();
     this.changeTetrominoPosition();
@@ -242,6 +239,19 @@ class Tetromino {
     }
   }
 
+  generateNextTetrominoBox() {
+    let gridRow = "<tr>";
+    //TODO: generate the box in the html for the next tetromino
+    /*for (let i = 0; i < BOARD_WIDTH; i++) {
+      gridRow += '<td class="empty-cell"></td>';
+    }
+    gridRow += "</tr>";*/
+
+    for (let i = 0; i < BOARD_HEIGHT; i++) {
+      $("#next-tetromino").append(gridRow);
+    }
+  }
+
   generateRandomNextType() {
     const randomNumber = Math.floor(Math.random() * TETROMINO_TYPE_SIZE);
     return randomNumber;
@@ -252,7 +262,11 @@ class Tetromino {
     return randomEmojiNumber;
   }
 
-  nextTetromino() {
+  nextTetromino(bottom) {
+    if (bottom) {
+      gameScore += 10;
+    }
+
     for (let i = 0; i < tetrominoPositions.length; i++) {
       const row = tetrominoPositions[i][0];
       const column = tetrominoPositions[i][1];
@@ -297,12 +311,9 @@ class Tetromino {
     }
 
     for (let i = 0; i < rowsToDelete.length; i++) {
-      console.log("Fjerner:" + rowsToDelete[i] + ": "+ gameArray[rowsToDelete[i]]);
       gameArray.splice(rowsToDelete[i], 1);
       gameArray = [[-1, -1, -1, -1, -1, -1, -1, -1, -1, -1],...gameArray];
     }
-
-    console.log(gameArray);
   }
 
   reappearEmojies() {
@@ -334,6 +345,8 @@ class Tetromino {
       gameArray[row-1][column-1] = -2;
     }
     this.makeDropFocus();
+
+    $("#current-score").text(gameScore);
   }
 
   moveHorizontal(toRight) {
@@ -388,6 +401,7 @@ class Tetromino {
   moveAllWayDown() {
     let tempTetrominoPositions = Util.copy2dArray(tetrominoPositions);
     let notFoundBottom = true;
+    let scoreMultiplier = 0;
 
     for (let i = 0; i < 15; i++) {
       let tempTetrominoPositions2 = Util.copy2dArray(tempTetrominoPositions);
@@ -401,6 +415,7 @@ class Tetromino {
         if (tableCell.attr('class') === undefined ||
             tableCell.hasClass("occupied-cell")) {
           notFoundBottom = false;
+          scoreMultiplier = i;
         }
       }
 
@@ -410,8 +425,11 @@ class Tetromino {
     }
     tetrominoPositions = Util.copy2dArray(tempTetrominoPositions);
 
+    console.log(scoreMultiplier);
+    gameScore += scoreMultiplier * 10;
+
     Util.removeCurrentEmojies();
     this.reappearEmojies();
-    this.nextTetromino();
+    this.nextTetromino(false);
   }
 }

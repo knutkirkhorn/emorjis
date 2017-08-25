@@ -16,7 +16,13 @@ $(document).ready(function() {
     switch (e.keyCode) {
       case 27:
         //Escape key pressed
-        game.pauseGame();
+        if (game.isPaused()) {
+          game.resumeGame();
+          $("#pause-modal-overlay").addClass("modal-hidden");
+        } else {
+          game.pauseGame();
+          $("#pause-modal-overlay").removeClass("modal-hidden");
+        }
         break;
       case 37:
         //Left key pressed
@@ -45,5 +51,10 @@ $(document).ready(function() {
         game.moveNormal();
       }
     }
+  });
+
+  $("#resume-game-button").click( () => {
+    game.resumeGame();
+    $("#pause-modal-overlay").addClass("modal-hidden");
   });
 });

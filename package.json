@@ -24,7 +24,8 @@
   },
   "homepage": "https://github.com/Knutakir/emorjis#readme",
   "dependencies": {
-    "express": "^4.15.4"
+    "express": "^4.15.4",
+    "ws": "^3.1.0"
   },
   "devDependencies": {
     "ava": "^0.21.0"

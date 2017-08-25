@@ -13,6 +13,7 @@ let currentGameState = GAME_STATE.RUNNING;
 let gameArray = [];
 let currentTetromino;
 let intervalClock;
+let currentGameScore = 0;
 
 class Game {
   constructor() {
@@ -22,7 +23,7 @@ class Game {
   initializeGame() {
     this.generateGameBoard();
     this.generateGameArray();
-    currentTetromino = new Tetromino();
+    currentTetromino = new Tetromino(currentGameScore);
     currentTetromino.gameArray = gameArray;
   }
 
@@ -37,6 +38,22 @@ class Game {
 
   pauseGame() {
     currentGameState = GAME_STATE.PAUSED;
+    clearInterval(intervalClock);
+  }
+
+  isPaused() {
+    return (currentGameState === GAME_STATE.PAUSED);
+  }
+
+  resumeGame() {
+    this.startGame();
+  }
+
+  newGame() {
+    //TODO: start new game
+    //TODO: clear game board
+    this.generateGameBoard();
+    this.generateGameArray();
   }
 
   generateGameBoard() {
@@ -74,7 +91,7 @@ class Game {
 
   tickClock() {
     if (Game.checkIfOnBottomOrOccupied()) {
-      currentTetromino.nextTetromino();
+      currentTetromino.nextTetromino(true);
     } else {
       currentTetromino.moveDown();
     }
