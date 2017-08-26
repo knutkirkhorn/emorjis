@@ -23,14 +23,15 @@ let nextEmojiType;
 let nextTetrominoType;
 //tPos = tetrominoPosition with [row, column], a definition of
 //where the tetromino starts
-let tPos = [0, 3];
+let tPos;
 let tetrominoState;
 let tetrominoPositions;
-let gameScore = 0;
 
 class Tetromino {
   constructor(gameScore) {
+    this.gameScore = gameScore;
     tetrominoState = 1;
+    tPos = [0, 3];
     currentEmojiType = EMOJIES[this.generateRandomEmoji()];
     currentTetrominoType = this.generateRandomNextType();
     nextEmojiType = EMOJIES[this.generateRandomEmoji()];
@@ -257,7 +258,7 @@ class Tetromino {
 
   nextTetromino(bottom) {
     if (bottom) {
-      gameScore += 10;
+      this.gameScore += 10;
     }
 
     for (let i = 0; i < tetrominoPositions.length; i++) {
@@ -303,6 +304,7 @@ class Tetromino {
       Game.stopGame();
       Util.showElement("message-modal-overlay")
       $("#change-game-state-button").text("Start New Game");
+      $("#game-over-score").text(this.gameScore)
     }
     return gameOver;
   }
@@ -329,7 +331,7 @@ class Tetromino {
       gameArray = [[-1, -1, -1, -1, -1, -1, -1, -1, -1, -1],...gameArray];
     }
 
-    gameScore += clearRowScore * rowsToDelete.length;
+    this.gameScore += clearRowScore * rowsToDelete.length;
   }
 
   reappearEmojies() {
@@ -364,7 +366,7 @@ class Tetromino {
     }
     this.makeDropFocus();
 
-    $("#current-score").text(gameScore);
+    $("#current-score").text(this.gameScore);
 
     let nextPositions = this.getNextTetrominoPositions();
     for (let i = 0; i < nextPositions.length; i++) {
@@ -384,7 +386,6 @@ class Tetromino {
         break;
       case TETROMINO_TYPE.S:
         nextTetrominoPositions = [[0, 1], [0, 2], [1, 0], [1, 1]];
-
         break;
       case TETROMINO_TYPE.Z:
         nextTetrominoPositions = [[0, 0], [0, 1], [1, 1], [1, 2]];
@@ -394,10 +395,10 @@ class Tetromino {
         break;
       case TETROMINO_TYPE.T:
         nextTetrominoPositions = [[0, 1], [1, 0], [1, 1], [1, 2]];
-            break;
+        break;
       case TETROMINO_TYPE.L:
-          nextTetrominoPositions = [[0, 1], [0, 2], [1, 2], [2, 2]];
-          break;
+        nextTetrominoPositions = [[0, 1], [0, 2], [1, 2], [2, 2]];
+        break;
       case TETROMINO_TYPE.J:
         nextTetrominoPositions = [[0, 0], [0, 1], [1, 0], [2, 0]];
         break;
@@ -457,9 +458,9 @@ class Tetromino {
   moveAllWayDown() {
     let tempTetrominoPositions = Util.copy2dArray(tetrominoPositions);
     let notFoundBottom = true;
-    let scoreMultiplier = 15;
+    let scoreMultiplier = 16;
 
-    for (let i = 0; i < 15; i++) {
+    for (let i = 0; i < 16; i++) {
       let tempTetrominoPositions2 = Util.copy2dArray(tempTetrominoPositions);
 
       for (let j = 0; j < tempTetrominoPositions2.length; j++) {
@@ -471,7 +472,7 @@ class Tetromino {
         if (tableCell.attr('class') === undefined ||
             tableCell.hasClass("occupied-cell")) {
           notFoundBottom = false;
-          if (scoreMultiplier === 15) {
+          if (scoreMultiplier === 16) {
             scoreMultiplier = i;
           }
         }
@@ -483,7 +484,7 @@ class Tetromino {
     }
     tetrominoPositions = Util.copy2dArray(tempTetrominoPositions);
 
-    gameScore += scoreMultiplier * 10;
+    this.gameScore += scoreMultiplier * 10;
 
     Util.removeCurrentEmojies();
     this.reappearEmojies();

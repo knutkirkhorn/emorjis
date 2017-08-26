@@ -9,11 +9,11 @@ const BOARD_WIDTH = 10;
 const DEFAULT_GAME_SPEED = 1000;
 const FAST_GAME_SPEED = 500;
 
-let currentGameState = GAME_STATE.NOT_STARTED;
-let gameArray = [];
+let currentGameState;
+let gameArray;
 let currentTetromino;
 let intervalClock;
-let currentGameScore = 0;
+let currentGameScore;
 
 class Game {
   constructor() {
@@ -21,6 +21,9 @@ class Game {
   }
 
   initializeGame() {
+    currentGameState = GAME_STATE.NOT_STARTED;
+    gameArray = [];
+    currentGameScore = 0;
     this.generateGameArray();
     this.generateNextTetrominoBoard();
     currentTetromino = new Tetromino(currentGameScore);
@@ -34,12 +37,8 @@ class Game {
 
   startNewGame() {
     this.clearGameBoard();
-    gameArray = [];
-    currentGameScore = 0;
-    currentGameState = GAME_STATE.NOT_STARTED;
     this.generateGameBoard();
-    this.initializeGame();
-    this.resumeGame();
+    this.startGame();
   }
 
   isGameOver() {
@@ -47,8 +46,8 @@ class Game {
   }
 
   isStarted() {
-    return (currentGameState !== GAME_STATE.NOT_STARTED) &&
-           (currentGameState !== GAME_STATE.STOPPED);
+    return (currentGameState === GAME_STATE.STARTED) ||
+           (currentGameState === GAME_STATE.PAUSED);
   }
 
   isRunning() {

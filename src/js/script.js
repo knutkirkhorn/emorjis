@@ -13,11 +13,9 @@ $(document).ready(function() {
         $(this).text("Pause Game");
       }
     } else {
-
       if (game.isGameOver()) {
         game.startNewGame();
         $(this).text("Pause Game");
-        console.log("start new game");
       } else {
         game.startGame();
         Util.showElement("next-tetromino-container");
@@ -41,9 +39,11 @@ $(document).ready(function() {
           if (game.isPaused()) {
             game.resumeGame();
             Util.hideElement("pause-modal-overlay");
+            $("#change-game-state-button").text("Pause Game");
           } else {
             game.pauseGame();
             Util.showElement("pause-modal-overlay");
+            $("#change-game-state-button").text("Resume Game");
           }
           break;
         case 37:
@@ -81,6 +81,13 @@ $(document).ready(function() {
   $("#resume-game-button").click( () => {
     game.resumeGame();
     Util.hideElement("pause-modal-overlay");
+    $("#change-game-state-button").text("Pause Game");
+  });
+
+  $("#start-new-game-button").click( () => {
+    game.startNewGame();
+    Util.hideElement("pause-modal-overlay");
+    $("#change-game-state-button").text("Pause Game");
   });
 
   $("#game-over-button").click( () => {
