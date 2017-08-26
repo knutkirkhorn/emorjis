@@ -25,6 +25,14 @@ class Util {
   static getTableCell(table, row, column) {
     return $("#" + table + " tr:nth-child(" + row + ") td:nth-child(" + column + ")");
   }
+
+  static hideElement(elementName) {
+    $("#" + elementName).addClass("hidden-element");
+  }
+
+  static showElement(elementName) {
+    $("#" + elementName).removeClass("hidden-element");
+  }
 }
 
 //TOOD: fix this so no error is displayed in the console when running

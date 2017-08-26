@@ -9,7 +9,7 @@ const BOARD_WIDTH = 10;
 const DEFAULT_GAME_SPEED = 1000;
 const FAST_GAME_SPEED = 500;
 
-let currentGameState = GAME_STATE.RUNNING;
+let currentGameState = GAME_STATE.NOT_STARTED;
 let gameArray = [];
 let currentTetromino;
 let intervalClock;
@@ -17,11 +17,10 @@ let currentGameScore = 0;
 
 class Game {
   constructor() {
-    this.initializeGame();
+    this.generateGameBoard();
   }
 
   initializeGame() {
-    this.generateGameBoard();
     this.generateGameArray();
     this.generateNextTetrominoBoard();
     currentTetromino = new Tetromino(currentGameScore);
@@ -29,8 +28,27 @@ class Game {
   }
 
   startGame() {
-    currentGameState = GAME_STATE.STARTED;
-    intervalClock = setInterval(this.tickClock, DEFAULT_GAME_SPEED);
+    this.initializeGame();
+    this.resumeGame();
+  }
+
+  startNewGame() {
+    this.clearGameBoard();
+    gameArray = [];
+    currentGameScore = 0;
+    currentGameState = GAME_STATE.NOT_STARTED;
+    this.generateGameBoard();
+    this.initializeGame();
+    this.resumeGame();
+  }
+
+  isGameOver() {
+    return (currentGameState === GAME_STATE.STOPPED);
+  }
+
+  isStarted() {
+    return (currentGameState !== GAME_STATE.NOT_STARTED) &&
+           (currentGameState !== GAME_STATE.STOPPED);
   }
 
   isRunning() {
@@ -52,14 +70,8 @@ class Game {
   }
 
   resumeGame() {
-    this.startGame();
-  }
-
-  newGame() {
-    //TODO: start new game
-    //TODO: clear game board
-    this.generateGameBoard();
-    this.generateGameArray();
+    currentGameState = GAME_STATE.STARTED;
+    intervalClock = setInterval(this.tickClock, DEFAULT_GAME_SPEED);
   }
 
   generateGameBoard() {
@@ -72,6 +84,10 @@ class Game {
     for (let i = 0; i < BOARD_HEIGHT; i++) {
       $("#game-board").append(gridRow);
     }
+  }
+
+  clearGameBoard() {
+    $("#game-board").empty();
   }
 
   generateNextTetrominoBoard() {
@@ -112,7 +128,7 @@ class Game {
       if (Game.checkIfOnBottomOrOccupied()) {
         if (currentTetromino.nextTetromino(true)) {
           //TOOD: fix this.stopGame();
-          //TODO: fix $("#message-modal-overlay").removeClass("modal-hidden");
+          //TODO: fix $("#message-modal-overlay").removeClass("hidden-element");
         }
       } else {
         currentTetromino.moveDown();

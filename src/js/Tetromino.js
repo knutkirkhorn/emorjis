@@ -301,7 +301,8 @@ class Tetromino {
       this.reappearEmojies();
     } else {
       Game.stopGame();
-      $("#message-modal-overlay").removeClass("modal-hidden");
+      Util.showElement("message-modal-overlay")
+      $("#change-game-state-button").text("Start New Game");
     }
     return gameOver;
   }

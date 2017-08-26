@@ -3,8 +3,29 @@ $(document).ready(function() {
 
   let isFastSpeed = false;
 
-  $("#start-game-button").click(function() {
-    game.startGame();
+  $("#change-game-state-button").click(function() {
+    if (game.isStarted()) {
+      if (game.isRunning()) {
+        game.pauseGame();
+        $(this).text("Resume Game");
+      } else {
+        game.resumeGame();
+        $(this).text("Pause Game");
+      }
+    } else {
+
+      if (game.isGameOver()) {
+        game.startNewGame();
+        $(this).text("Pause Game");
+        console.log("start new game");
+      } else {
+        game.startGame();
+        Util.showElement("next-tetromino-container");
+        Util.showElement("score-container");
+        $(this).text("Pause Game");
+      }
+    }
+    $(this).blur();
   });
 
   $("body").keydown(function(e) {
@@ -19,10 +40,10 @@ $(document).ready(function() {
           //Escape key pressed
           if (game.isPaused()) {
             game.resumeGame();
-            $("#pause-modal-overlay").addClass("modal-hidden");
+            Util.hideElement("pause-modal-overlay");
           } else {
             game.pauseGame();
-            $("#pause-modal-overlay").removeClass("modal-hidden");
+            Util.showElement("pause-modal-overlay");
           }
           break;
         case 37:
@@ -59,10 +80,10 @@ $(document).ready(function() {
 
   $("#resume-game-button").click( () => {
     game.resumeGame();
-    $("#pause-modal-overlay").addClass("modal-hidden");
+    Util.hideElement("pause-modal-overlay");
   });
 
   $("#game-over-button").click( () => {
-    $("#message-modal-overlay").addClass("modal-hidden");
+    Util.hideElement("message-modal-overlay");
   });
 });
