@@ -8,20 +8,17 @@ body {
   margin: 0 auto;
   width: 50%;
   text-align: center;
+  display: flex;
 }
 
 .side-container {
-  display: inline-block;
-  position: absolute;
-  top: 25%;
-  right: 20%;
-
+  margin-top: 25%;
 }
 
 #game-board {
   font-size: 120%;
   background-color: #f44141;
-  display: inline-block;
+  flex: 1;
 }
 
 #game-board td {
@@ -34,10 +31,6 @@ body {
 
 .bottom-drop-place {
   box-shadow: 0px 0px 1px 1px white;
-}
-
-.side-container {
-  display: inline-block;
 }
 
 .side-element {

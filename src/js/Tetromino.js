@@ -245,19 +245,6 @@ class Tetromino {
     }
   }
 
-  generateNextTetrominoBox() {
-    let gridRow = "<tr>";
-    //TODO: generate the box in the html for the next tetromino
-    /*for (let i = 0; i < BOARD_WIDTH; i++) {
-      gridRow += '<td class="empty-cell"></td>';
-    }
-    gridRow += "</tr>";*/
-
-    for (let i = 0; i < BOARD_HEIGHT; i++) {
-      $("#next-tetromino").append(gridRow);
-    }
-  }
-
   generateRandomNextType() {
     const randomNumber = Math.floor(Math.random() * TETROMINO_TYPE_SIZE);
     return randomNumber;
@@ -335,12 +322,22 @@ class Tetromino {
       $(this).removeClass("occupied-cell").html("").addClass("empty-cell");
     });
 
+    //Check if the start position of the tetromino is blocked,
+    // if it is then the game is over.
+    for (let i = 0; i < gameArray.length; i++) {
+      for (let j = 0; j < gameArray[i].length; j++) {
+        //TODO: do stuff for checking game stopped?
+      }
+    }
+
     for (let i = 0; i < gameArray.length; i++) {
       for (let j = 0; j < gameArray[i].length; j++) {
         const currentValue = gameArray[i][j];
         if (currentValue >= 0) {
           //Add emoji to table
-          Util.getTableCell("game-board", i+1, j+1).addClass("occupied-cell").html(EMOJIES[currentValue]);
+          Util.getTableCell("game-board", i+1, j+1)
+            .addClass("occupied-cell")
+            .html(EMOJIES[currentValue]);
         }
       }
     }
@@ -372,7 +369,6 @@ class Tetromino {
 
     switch (nextTetrominoType) {
       case TETROMINO_TYPE.O:
-        //Because this tetromino is only one form regardless of rotation
         nextTetrominoPositions = [[0, 0], [0, 1], [1, 0], [1, 1]];
         break;
       case TETROMINO_TYPE.S:
