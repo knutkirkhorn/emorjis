@@ -22,8 +22,16 @@ class Util {
     });
   }
 
-  static getTableCell(row, column) {
-    return $("tr:nth-child(" + row + ") td:nth-child(" + column + ")");
+  static getTableCell(table, row, column) {
+    return $("#" + table + " tr:nth-child(" + row + ") td:nth-child(" + column + ")");
+  }
+
+  static hideElement(elementName) {
+    $("#" + elementName).addClass("hidden-element");
+  }
+
+  static showElement(elementName) {
+    $("#" + elementName).removeClass("hidden-element");
   }
 }
 

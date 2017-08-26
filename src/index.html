@@ -19,7 +19,7 @@
         </tbody>
       </table>
       <div class="side-container">
-        <div class="next-tetromino-container">
+        <div id="next-tetromino-container" class="side-element hidden-element">
           <span>Next tetromino: </span>
           <table id="next-tetromino">
             <tbody>
@@ -27,15 +27,16 @@
             </tbody>
           </table>
         </div>
-        <div class="score-container">
+        <div id="score-container" class="side-element hidden-element">
           <span>Current score: </span>
           <span id="current-score">0</span>
         </div>
-        <button id="start-game-button" class="red-button" type="button" name="button">Start Game</button>
+        <button id="change-game-state-button" class="red-button side-element"
+        type="button" name="button">Start Game</button>
       </div>
     </div>
 
-    <div id="pause-modal-overlay" class="modal-overlay modal-hidden">
+    <div id="pause-modal-overlay" class="modal-overlay hidden-element">
       <div class="pause-modal modal">
         <div class="modal-head">
           <p>Game is paused</p>
@@ -43,7 +44,18 @@
         <div class="modal-body">
           <p id="resume-game-button" class="modal-element">Resume game</p>
           <p class="modal-element">Change game settings</p>
-          <p class="modal-element">Start new game</p>
+          <p id="start-new-game-button" class="modal-element">Start new game</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="message-modal-overlay" class="modal-overlay hidden-element">
+      <div class="message-modal modal modal-round modal-spacious">
+        <div class="modal-message">
+          <p><b>Game over</b></p>
+          <span>Your score: </span>
+          <span id="game-over-score"><b>0</b></span>
+          <button id="game-over-button" class="red-button" type="button">Ok</button>
         </div>
       </div>
     </div>

@@ -9,31 +9,54 @@ const BOARD_WIDTH = 10;
 const DEFAULT_GAME_SPEED = 1000;
 const FAST_GAME_SPEED = 500;
 
-let currentGameState = GAME_STATE.RUNNING;
-let gameArray = [];
+let currentGameState;
+let gameArray;
 let currentTetromino;
 let intervalClock;
-let currentGameScore = 0;
+let currentGameScore;
 
 class Game {
   constructor() {
-    this.initializeGame();
+    this.generateGameBoard();
   }
 
   initializeGame() {
-    this.generateGameBoard();
+    currentGameState = GAME_STATE.NOT_STARTED;
+    gameArray = [];
+    currentGameScore = 0;
     this.generateGameArray();
+    this.generateNextTetrominoBoard();
     currentTetromino = new Tetromino(currentGameScore);
     currentTetromino.gameArray = gameArray;
   }
 
   startGame() {
-    currentGameState = GAME_STATE.STARTED;
-    intervalClock = setInterval(this.tickClock, DEFAULT_GAME_SPEED);
+    this.initializeGame();
+    this.resumeGame();
   }
 
-  stopGame() {
+  startNewGame() {
+    this.clearGameBoard();
+    this.generateGameBoard();
+    this.startGame();
+  }
+
+  isGameOver() {
+    return (currentGameState === GAME_STATE.STOPPED);
+  }
+
+  isStarted() {
+    return (currentGameState === GAME_STATE.STARTED) ||
+           (currentGameState === GAME_STATE.PAUSED);
+  }
+
+  isRunning() {
+    return (currentGameState === GAME_STATE.STARTED);
+  }
+
+  static stopGame() {
     currentGameState = GAME_STATE.STOPPED;
+    clearInterval(intervalClock);
   }
 
   pauseGame() {
@@ -46,14 +69,8 @@ class Game {
   }
 
   resumeGame() {
-    this.startGame();
-  }
-
-  newGame() {
-    //TODO: start new game
-    //TODO: clear game board
-    this.generateGameBoard();
-    this.generateGameArray();
+    currentGameState = GAME_STATE.STARTED;
+    intervalClock = setInterval(this.tickClock, DEFAULT_GAME_SPEED);
   }
 
   generateGameBoard() {
@@ -65,6 +82,22 @@ class Game {
 
     for (let i = 0; i < BOARD_HEIGHT; i++) {
       $("#game-board").append(gridRow);
+    }
+  }
+
+  clearGameBoard() {
+    $("#game-board").empty();
+  }
+
+  generateNextTetrominoBoard() {
+    let gridRow = "<tr>";
+    for (let i = 0; i < 4; i++) {
+      gridRow += '<td class="empty-cell"></td>';
+    }
+    gridRow += "</td>";
+
+    for (let i = 0; i < 4; i++) {
+      $("#next-tetromino").append(gridRow);
     }
   }
 
@@ -90,10 +123,17 @@ class Game {
   }
 
   tickClock() {
-    if (Game.checkIfOnBottomOrOccupied()) {
-      currentTetromino.nextTetromino(true);
+    if (currentGameState === GAME_STATE.STARTED) {
+      if (Game.checkIfOnBottomOrOccupied()) {
+        if (currentTetromino.nextTetromino(true)) {
+          //TOOD: fix this.stopGame();
+          //TODO: fix $("#message-modal-overlay").removeClass("hidden-element");
+        }
+      } else {
+        currentTetromino.moveDown();
+      }
     } else {
-      currentTetromino.moveDown();
+      clearInterval(intervalClock);
     }
   }
 
