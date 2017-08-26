@@ -7,7 +7,7 @@ $(document).ready(function() {
 
   let isFastSpeed = false;
 
-  $("body").keypress(function(e) {
+  $("body").keydown(function(e) {
     //Spacebar key pressed
     if (e.which === 32) {
       game.moveAllWayDown();

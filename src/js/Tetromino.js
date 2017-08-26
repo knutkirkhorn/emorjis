@@ -198,7 +198,7 @@ class Tetromino {
 
       const row = tetrominoPositions[i][0] + 1;
       const column = tetrominoPositions[i][1] + 1;
-      if (Util.getTableCell(row, column).hasClass('occupied-cell')) {
+      if (Util.getTableCell("game-board", row, column).hasClass('occupied-cell')) {
         blocked = true;
       }
     }
@@ -222,7 +222,7 @@ class Tetromino {
         tempTetrominoPositions2[i][0]++;
         const column = tempTetrominoPositions2[i][1] + 1;
         const row = tempTetrominoPositions2[i][0] + 1;
-        const tableCell = Util.getTableCell(row, column);
+        const tableCell = Util.getTableCell("game-board", row, column);
 
         if (tableCell.hasClass("occupied-cell")) {
           notFoundBottom = false;
@@ -241,7 +241,7 @@ class Tetromino {
     for (let i = 0; i < tempTetrominoPositions.length; i++) {
       const column = tempTetrominoPositions[i][1] + 1;
       const row = tempTetrominoPositions[i][0] + 1;
-      Util.getTableCell(row, column).addClass("bottom-drop-place");
+      Util.getTableCell("game-board", row, column).addClass("bottom-drop-place");
     }
   }
 
@@ -340,7 +340,7 @@ class Tetromino {
         const currentValue = gameArray[i][j];
         if (currentValue >= 0) {
           //Add emoji to table
-          Util.getTableCell(i+1, j+1).addClass("occupied-cell").html(EMOJIES[currentValue]);
+          Util.getTableCell("game-board", i+1, j+1).addClass("occupied-cell").html(EMOJIES[currentValue]);
         }
       }
     }
@@ -349,7 +349,7 @@ class Tetromino {
       const row = tetrominoPositions[i][0] + 1;
       const column = tetrominoPositions[i][1] + 1;
 
-      Util.getTableCell(row, column)
+      Util.getTableCell("game-board", row, column)
         .addClass("current-tetromino")
         .html(currentEmojiType);
       gameArray[row-1][column-1] = -2;
@@ -360,9 +360,11 @@ class Tetromino {
 
     let nextPositions = this.getNextTetrominoPositions();
     for (let i = 0; i < nextPositions.length; i++) {
-      
+      const row = nextPositions[i][0] + 1;
+      const column = nextPositions[i][1] + 1;
+      Util.getTableCell("next-tetromino", row, column)
+        .addClass("occupied-cell").html(nextEmojiType);
     }
-    $("#next-tetromino").html(nextEmojiType);
   }
 
   getNextTetrominoPositions() {
@@ -371,33 +373,26 @@ class Tetromino {
     switch (nextTetrominoType) {
       case TETROMINO_TYPE.O:
         //Because this tetromino is only one form regardless of rotation
-        nextTetrominoPositions = [[tPos[0], tPos[1]], [tPos[0], tPos[1]+1],
-                            [tPos[0]+1, tPos[1]], [tPos[0]+1, tPos[1]+1]];
+        nextTetrominoPositions = [[0, 0], [0, 1], [1, 0], [1, 1]];
         break;
       case TETROMINO_TYPE.S:
-        nextTetrominoPositions = [[tPos[0], tPos[1]+1], [tPos[0], tPos[1]+2],
-                            [tPos[0]+1, tPos[1]], [tPos[0]+1, tPos[1]+1]];
+        nextTetrominoPositions = [[0, 1], [0, 2], [1, 0], [1, 1]];
 
         break;
       case TETROMINO_TYPE.Z:
-        nextTetrominoPositions = [[tPos[0], tPos[1]], [tPos[0], tPos[1]+1],
-                            [tPos[0]+1, tPos[1]+1], [tPos[0]+1, tPos[1]+2]];
+        nextTetrominoPositions = [[0, 0], [0, 1], [1, 1], [1, 2]];
         break;
       case TETROMINO_TYPE.I:
-        nextTetrominoPositions = [[tPos[0], tPos[1]], [tPos[0], tPos[1]+1],
-                            [tPos[0], tPos[1]+2], [tPos[0], tPos[1]+3]];
+        nextTetrominoPositions = [[0, 0], [0, 1], [0, 2], [0, 3]];
         break;
       case TETROMINO_TYPE.T:
-        nextTetrominoPositions = [[tPos[0], tPos[1]+1], [tPos[0]+1, tPos[1]],
-                            [tPos[0]+1, tPos[1]+1], [tPos[0]+1, tPos[1]+2]];
+        nextTetrominoPositions = [[0, 1], [1, 0], [1, 1], [1, 2]];
             break;
       case TETROMINO_TYPE.L:
-          nextTetrominoPositions = [[tPos[0], tPos[1]+1], [tPos[0], tPos[1]+2],
-                            [tPos[0]+1, tPos[1]+2], [tPos[0]+2, tPos[1]+2]];
+          nextTetrominoPositions = [[0, 1], [0, 2], [1, 2], [2, 2]];
           break;
       case TETROMINO_TYPE.J:
-        nextTetrominoPositions = [[tPos[0], tPos[1]], [tPos[0], tPos[1]+1],
-                            [tPos[0]+1, tPos[1]], [tPos[0]+2, tPos[1]]];
+        nextTetrominoPositions = [[0, 0], [0, 1], [1, 0], [2, 0]];
         break;
     }
     return nextTetrominoPositions;
@@ -464,7 +459,7 @@ class Tetromino {
         tempTetrominoPositions2[j][0]++;
         const column = tempTetrominoPositions2[j][1] + 1;
         const row = tempTetrominoPositions2[j][0] + 1;
-        const tableCell = Util.getTableCell(row, column);
+        const tableCell = Util.getTableCell("game-board", row, column);
 
         if (tableCell.attr('class') === undefined ||
             tableCell.hasClass("occupied-cell")) {
