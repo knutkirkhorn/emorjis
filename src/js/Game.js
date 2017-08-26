@@ -33,8 +33,13 @@ class Game {
     intervalClock = setInterval(this.tickClock, DEFAULT_GAME_SPEED);
   }
 
-  stopGame() {
+  isRunning() {
+    return (currentGameState === GAME_STATE.STARTED);
+  }
+
+  static stopGame() {
     currentGameState = GAME_STATE.STOPPED;
+    clearInterval(intervalClock);
   }
 
   pauseGame() {
@@ -103,10 +108,17 @@ class Game {
   }
 
   tickClock() {
-    if (Game.checkIfOnBottomOrOccupied()) {
-      currentTetromino.nextTetromino(true);
+    if (currentGameState === GAME_STATE.STARTED) {
+      if (Game.checkIfOnBottomOrOccupied()) {
+        if (currentTetromino.nextTetromino(true)) {
+          //TOOD: fix this.stopGame();
+          //TODO: fix $("#message-modal-overlay").removeClass("modal-hidden");
+        }
+      } else {
+        currentTetromino.moveDown();
+      }
     } else {
-      currentTetromino.moveDown();
+      clearInterval(intervalClock);
     }
   }
 

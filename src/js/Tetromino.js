@@ -285,7 +285,25 @@ class Tetromino {
     currentTetrominoType = nextTetrominoType;
     nextTetrominoType = this.generateRandomNextType();
     this.changeTetrominoPosition();
-    this.reappearEmojies();
+
+    //Check if the start position of the tetromino is blocked,
+    // if it is then the game is over.
+    let gameOver = false;
+    for (let i = 0; i < tetrominoPositions.length; i++) {
+      const row = tetrominoPositions[i][0];
+      const column = tetrominoPositions[i][1];
+
+      if (gameArray[row][column] >= 0) {
+        gameOver = true;
+      }
+    }
+    if (!gameOver) {
+      this.reappearEmojies();
+    } else {
+      Game.stopGame();
+      $("#message-modal-overlay").removeClass("modal-hidden");
+    }
+    return gameOver;
   }
 
   checkIfRowFull() {
@@ -321,14 +339,6 @@ class Tetromino {
     $(".occupied-cell").each(function() {
       $(this).removeClass("occupied-cell").html("").addClass("empty-cell");
     });
-
-    //Check if the start position of the tetromino is blocked,
-    // if it is then the game is over.
-    for (let i = 0; i < gameArray.length; i++) {
-      for (let j = 0; j < gameArray[i].length; j++) {
-        //TODO: do stuff for checking game stopped?
-      }
-    }
 
     for (let i = 0; i < gameArray.length; i++) {
       for (let j = 0; j < gameArray[i].length; j++) {
