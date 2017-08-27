@@ -28,12 +28,12 @@ A little preview image of emorjis
 ## Score system
 In emorjis you get score from:
 * Letting a tetromino drop all the way down, you only get a score of 10 with this.
-* Move a tetromino (triggered by pressing <kbd>Space</kbd>), you get a score
-based of how high you are in the game board. You get a score of number of rows
+* Move a tetromino all the way down(triggered by pressing <kbd>Space</kbd>),
+you get a score based of how high you are in the game board. You get a score of number of rows
 in the table to move down multiplied with 10.
-Example: move 7 rows down: 7 * 10 = 70
+  * Example: move 7 rows down: 7 * 10 = 70
 * Clear rows. You get 100 base score multiplied with number of rows cleared powered.
-Example: 2 rows cleared = 100 * (2^(2)) = 400
+  * Example: 2 rows cleared = 100 * (2^(2)) = 400
 
 ## Documentation
 See [src/README.md](src/README.md) for a explenation of some of the code.
