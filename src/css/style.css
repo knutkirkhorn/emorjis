@@ -109,3 +109,20 @@ body {
   background-color: lightgray;
   cursor: pointer;
 }
+
+#controls-modal {
+  width: 40%;
+}
+
+.control-key {
+  /*border: 1px solid lightgray;*/
+  border-radius: 5px;
+  background-color: #f44141;
+  padding: 3px;
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5);
+}
+
+.control-arrow {
+  padding-left: 10px;
+  padding-right: 10px;
+}

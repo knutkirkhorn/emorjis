@@ -331,7 +331,9 @@ class Tetromino {
       gameArray = [[-1, -1, -1, -1, -1, -1, -1, -1, -1, -1],...gameArray];
     }
 
-    this.gameScore += clearRowScore * rowsToDelete.length;
+    if (rowsToDelete.length > 0) {
+      this.gameScore += clearRowScore * (rowsToDelete.length * rowsToDelete.length);
+    }
   }
 
   reappearEmojies() {

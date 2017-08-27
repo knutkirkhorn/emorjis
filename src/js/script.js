@@ -93,4 +93,12 @@ $(document).ready(function() {
   $("#game-over-button").click( () => {
     Util.hideElement("message-modal-overlay");
   });
+
+  $("#show-controls-button").click( () => {
+    Util.showElement("controls-modal-overlay");
+  });
+
+  $("#hide-controls").click( () => {
+    Util.hideElement("controls-modal-overlay");
+  });
 });
