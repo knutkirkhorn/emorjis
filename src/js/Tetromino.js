@@ -8,8 +8,8 @@ const TETROMINO_TYPE = {
   L: 5,
   J: 6
 };
-const EMOJIES_SIZE = 5;
-const EMOJIES = ['😂', '🐶', '🔥', '🚪', '🍂'];
+const EMOJIES_SIZE = 7;
+const EMOJIES = ['😂', '🐶', '🔥', '🚪', '🍂', '🐱', '☀️'];
 const maxBoardSize = 17;
 const defaultStartPosition = [0, 3];
 const maxEndRight = 9;
@@ -205,7 +205,11 @@ class Tetromino {
     }
 
     if (blocked) {
-      tetrominoState--;
+      if (tetrominoState === 1) {
+        tetrominoState = 4;
+      } else {
+        tetrominoState--;
+      }
       this.changeTetrominoPosition();
     }
 
@@ -409,7 +413,6 @@ class Tetromino {
   }
 
   moveHorizontal(toRight) {
-    //TODO: console.log(gameArray);
     //Check if most left or right
     let isAtEnd = false;
     let endPosition;
