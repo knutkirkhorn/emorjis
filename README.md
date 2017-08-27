@@ -23,7 +23,7 @@ A little preview image of emorjis
 * <kbd>↑</kbd> to rotate the tetromino clockwise.
 * <kbd>↓</kbd> to move tetromino faster.
 * <kbd>Space</kbd> to drop the tetromino all the way down.
-* <kbd>Escape</kbd> to pause the game, a menu/modal will appear.
+* <kbd>Escape</kbd> to pause the game and view a menu.
 
 ## Score system
 In emorjis you get score from:
