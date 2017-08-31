@@ -14,13 +14,13 @@ an express server for the game, then navigate to the ***src***
 folder and run [index.html](src/index.html) in your webbrowser.
 
 ## Screenshot
-![Preview](media/screenshot-1,png)
+![Preview](media/screenshot-1.png)
 
 ### Menu
-![Preview](media/screenshot-2,png)
+![Preview](media/screenshot-2.png)
 
 ### Game over
-![Preview](media/screenshot-3,png)
+![Preview](media/screenshot-3.png)
 
 A little preview image of emorjis
 
