@@ -22,8 +22,6 @@ folder and run [index.html](src/index.html) in your webbrowser.
 ### Game over
 ![Preview](media/screenshot-3.png)
 
-A little preview image of emorjis
-
 ## Controls
 * <kbd>←</kbd> to navigate left and <kbd>→</kbd> to navigate right.
 * <kbd>↑</kbd> to rotate the tetromino clockwise.
