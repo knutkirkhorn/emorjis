@@ -306,11 +306,16 @@ class Tetromino {
       this.reappearEmojies();
     } else {
       Game.stopGame();
-      Util.showElement("message-modal-overlay")
+      Util.showElement("message-modal-overlay");
       $("#change-game-state-button").text("Start New Game");
-      $("#game-over-score").text(this.gameScore)
+      $("#game-over-score").text(this.gameScore);
+      this.sendNewHighScore();
     }
     return gameOver;
+  }
+
+  sendNewHighScore() {
+    
   }
 
   checkIfRowFull() {

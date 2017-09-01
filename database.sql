@@ -3,7 +3,7 @@ DROP TABLE IF EXISTS Users;
 
 CREATE TABLE Users(
   user_id INTEGER AUTO_INCREMENT,
-  name VARCHAR(16) NOT NULL,
+  username VARCHAR(16) NOT NULL,
   password VARCHAR(50) NOT NULL,
   PRIMARY KEY(user_id)
 );
