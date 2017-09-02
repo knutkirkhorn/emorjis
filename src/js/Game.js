@@ -14,6 +14,7 @@ let gameArray;
 let currentTetromino;
 let intervalClock;
 let currentGameScore;
+let username;
 
 class Game {
   constructor() {
@@ -28,6 +29,14 @@ class Game {
     this.generateNextTetrominoBoard();
     currentTetromino = new Tetromino(currentGameScore);
     currentTetromino.gameArray = gameArray;
+  }
+
+  static getUsername() {
+    return username;
+  }
+
+  setUsername(newUsername) {
+    username = newUsername;
   }
 
   startGame() {

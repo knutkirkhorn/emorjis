@@ -6,6 +6,7 @@ body {
 
 .main-container {
   margin: 0 auto;
+  margin-top: 10%;
   width: 50%;
   text-align: center;
   display: flex;
@@ -125,4 +126,14 @@ body {
 .control-arrow {
   padding-left: 10px;
   padding-right: 10px;
+}
+
+#username-box {
+  position: absolute;
+  top: 10px;
+  right: 30px;
+}
+
+#username-text {
+  color: #f44141;
 }

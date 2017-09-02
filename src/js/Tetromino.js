@@ -315,7 +315,13 @@ class Tetromino {
   }
 
   sendNewHighScore() {
-    
+    const xmphttp = new XMLHttpRequest();
+    xmphttp.open('POST', '/highscore');
+    xmphttp.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
+    xmphttp.send(JSON.stringify({
+      username: Game.getUsername(),
+      score: this.gameScore
+    }));
   }
 
   checkIfRowFull() {

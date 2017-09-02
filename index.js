@@ -24,6 +24,24 @@ connection.connect( (error) => {
   console.log("Connected successfully to emorjis database");
 });
 
+app.post('/user/', (request, response) => {
+  const username = request.body.username;
+
+  connection.query('SELECT * FROM Users WHERE username = ?', [username], (error, result, fields) => {
+    if (!error && result.length !== 0) {
+      response.send("Username already exist");
+    } else {
+      connection.query('INSERT INTO Users(username, password) VALUES(?, "TODO")', [username], (error, result, fields) => {
+        if (!error) {
+          response.send("New username added");
+        } else {
+          response.sendStatus(404);
+        }
+      });
+    }
+  });
+});
+
 app.post('/highscore/', (request, response) => {
   const username = request.body.username;
   const score = request.body.score;

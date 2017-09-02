@@ -10,8 +10,8 @@ CREATE TABLE Users(
 
 CREATE TABLE Highscore(
   score_id INTEGER AUTO_INCREMENT,
-  score INTEGER,
-  user_id INTEGER,
+  score INTEGER NOT NULL,
+  user_id INTEGER NOT NULL,
   PRIMARY KEY(score_id),
   FOREIGN KEY(user_id) REFERENCES Users(user_id)
 );
