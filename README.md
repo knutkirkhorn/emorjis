@@ -1,13 +1,11 @@
 # emorjis [![Build Status](https://travis-ci.org/Knutakir/emorjis.svg?branch=master)](https://travis-ci.org/Knutakir/emorjis) [![dependencies Status](https://david-dm.org/knutakir/emorjis/status.svg)](https://david-dm.org/knutakir/emorjis)
-Emoji Tetris 😎 made with javascript
-
-All game files are found in [src](src).
+Emoji Tetris 😎 made with javascript, mysql, express, css and html
 
 ## Installation
 Fork this repository or download
 with: ```git clone https://github.com/Knutakir/emorjis```
 
-The server has stored its database configuration in the [db-config.json][db-config.json]
+The server has stored its database configuration in the [db-config.json](db-config.json)
 file and it needs to be updated to the users correct database.
 The database script ([database.sql](database.sql)) needs to be run before starting the server aswell.
 
