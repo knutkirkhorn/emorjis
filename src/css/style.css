@@ -52,6 +52,10 @@ body {
   transition: ease-in-out 0.2s;
 }
 
+.red-button-no-transition {
+  transition: none;
+}
+
 .red-button:hover {
   background-color: #f44141;
   cursor: pointer;
@@ -61,6 +65,13 @@ body {
 
 .red-button:focus {
   outline: none;
+}
+
+.red-input {
+  border: 0;
+  border-bottom: 2px solid #e95959;
+  font-size: 100%;
+  text-align: center;
 }
 
 #highscore-panel {
@@ -83,6 +94,10 @@ body {
   color: white
 }
 
+.hidden-element {
+  visibility: hidden;
+}
+
 .modal-overlay {
   background-color: rgba(0, 0, 0, 0.5);
   position: absolute;
@@ -90,11 +105,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  /*transition: ease-in-out 0.2s;*/
-}
 
-.hidden-element {
-  visibility: hidden;
 }
 
 .modal {
@@ -102,8 +113,59 @@ body {
   margin: 0 auto;
   margin-top: 15%;
   background-color: white;
-  /*border-radius: 25px;*/
   text-align: center;
+  /*transition: ease-in-out 0.2s;*/
+  -webkit-animation-name: modal-animatein;
+  -webkit-animation-duration: 0.4s;
+  animation-name: modal-animatein;
+  animation-duration: 0.4s
+}
+
+/* Modal animate in */
+@-webkit-keyframes modal-animatein {
+  from {margin-top: 10%; opacity: 0}
+  to {margin-top: 15%; opacity: 1}
+}
+
+@keyframes modal-animatein {
+  from {margin-top: 10%; opacity: 0}
+  to {margin-top: 15%; opacity: 1}
+}
+
+.modal-fadeout {
+  -webkit-animation-name: modal-animateout;
+  -webkit-animation-duration: 0.4s;
+  animation-name: modal-animateout;
+  animation-duration: 0.4s
+}
+
+/* Modal animate out */
+@-webkit-keyframes modal-animateout {
+  from {margin-top: 15%; opacity: 1}
+  to {margin-top: 20%; opacity: 0}
+}
+
+@keyframes modal-animateout {
+  from {margin-top: 15%; opacity: 1}
+  to {margin-top: 20%; opacity: 0}
+}
+
+.modal-overlay-fadeout {
+  -webkit-animation-name: modal-overlayout;
+  -webkit-animation-duration: 0.4s;
+  animation-name: modal-overlayout;
+  animation-duration: 0.4s;
+  visibility: hidden;
+}
+
+@-webkit-keyframes modal-overlayout {
+  from {opacity: 1}
+  to {visibility: hidden; opacity: 0}
+}
+
+@keyframes modal-overlayout {
+  from {opacity: 1}
+  to {visibility: hidden; opacity: 0}
 }
 
 .modal-round {
@@ -111,7 +173,7 @@ body {
 }
 
 .modal-spacious {
-  padding:10px;
+  padding: 1.2%;
 }
 
 .modal-head {

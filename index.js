@@ -21,8 +21,9 @@ let connection = mysql.createConnection({
 connection.connect( (error) => {
   if (error) {
     console.log(error);
+  } else {
+    console.log("Connected successfully to emorjis database");
   }
-  console.log("Connected successfully to emorjis database");
 });
 
 app.post('/user/', (request, response) => {
@@ -53,7 +54,6 @@ app.get('/highscore/', (request, response) => {
           score: result[i].score
         });
       }
-      //const jsonString = JSON.stingify(jsonResponse);
       response.json(jsonResponse);
     }
   });

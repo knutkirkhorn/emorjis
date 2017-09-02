@@ -65,19 +65,19 @@ class Tetromino {
         switch (tetrominoState) {
           case 1:
             tetrominoPositions = [[tPos[0], tPos[1]+1], [tPos[0], tPos[1]+2],
-                                [tPos[0]+1, tPos[1]], [tPos[0]+1, tPos[1]+1]];
+                                  [tPos[0]+1, tPos[1]], [tPos[0]+1, tPos[1]+1]];
             break;
           case 2:
             tetrominoPositions = [[tPos[0], tPos[1]+1], [tPos[0]+1, tPos[1]+1],
-                              [tPos[0]+1, tPos[1]+2], [tPos[0]+2, tPos[1]+2]];
+                                  [tPos[0]+1, tPos[1]+2], [tPos[0]+2, tPos[1]+2]];
             break;
           case 3:
             tetrominoPositions = [[tPos[0]+1, tPos[1]+1], [tPos[0]+1, tPos[1]+2],
-                              [tPos[0]+2, tPos[1]], [tPos[0]+2, tPos[1]+1]];
+                                  [tPos[0]+2, tPos[1]], [tPos[0]+2, tPos[1]+1]];
             break;
           case 4:
             tetrominoPositions = [[tPos[0], tPos[1]], [tPos[0]+1, tPos[1]],
-                              [tPos[0]+1, tPos[1]+1], [tPos[0]+2, tPos[1]+1]];
+                                  [tPos[0]+1, tPos[1]+1], [tPos[0]+2, tPos[1]+1]];
             break;
         }
         break;
@@ -85,19 +85,19 @@ class Tetromino {
         switch (tetrominoState) {
           case 1:
             tetrominoPositions = [[tPos[0], tPos[1]], [tPos[0], tPos[1]+1],
-                                [tPos[0]+1, tPos[1]+1], [tPos[0]+1, tPos[1]+2]];
+                                  [tPos[0]+1, tPos[1]+1], [tPos[0]+1, tPos[1]+2]];
             break;
           case 2:
             tetrominoPositions = [[tPos[0], tPos[1]+2], [tPos[0]+1, tPos[1]+1],
-                              [tPos[0]+1, tPos[1]+2], [tPos[0]+2, tPos[1]+1]];
+                                  [tPos[0]+1, tPos[1]+2], [tPos[0]+2, tPos[1]+1]];
             break;
           case 3:
             tetrominoPositions = [[tPos[0]+1, tPos[1]], [tPos[0]+1, tPos[1]+1],
-                              [tPos[0]+2, tPos[1]+1], [tPos[0]+2, tPos[1]+2]];
+                                  [tPos[0]+2, tPos[1]+1], [tPos[0]+2, tPos[1]+2]];
             break;
           case 4:
             tetrominoPositions = [[tPos[0], tPos[1]+1], [tPos[0]+1, tPos[1]],
-                              [tPos[0]+1, tPos[1]+1], [tPos[0]+2, tPos[1]]];
+                                  [tPos[0]+1, tPos[1]+1], [tPos[0]+2, tPos[1]]];
             break;
         }
         break;
@@ -105,19 +105,19 @@ class Tetromino {
         switch (tetrominoState) {
           case 1:
             tetrominoPositions = [[tPos[0], tPos[1]], [tPos[0], tPos[1]+1],
-                                [tPos[0], tPos[1]+2], [tPos[0], tPos[1]+3]];
+                                  [tPos[0], tPos[1]+2], [tPos[0], tPos[1]+3]];
             break;
           case 2:
             tetrominoPositions = [[tPos[0], tPos[1]+3], [tPos[0]+1, tPos[1]+3],
-                              [tPos[0]+2, tPos[1]+3], [tPos[0]+3, tPos[1]+3]];
+                                  [tPos[0]+2, tPos[1]+3], [tPos[0]+3, tPos[1]+3]];
             break;
           case 3:
             tetrominoPositions = [[tPos[0]+3, tPos[1]], [tPos[0]+3, tPos[1]+1],
-                              [tPos[0]+3, tPos[1]+2], [tPos[0]+3, tPos[1]+3]];
+                                  [tPos[0]+3, tPos[1]+2], [tPos[0]+3, tPos[1]+3]];
             break;
           case 4:
             tetrominoPositions = [[tPos[0], tPos[1]], [tPos[0]+1, tPos[1]],
-                              [tPos[0]+2, tPos[1]], [tPos[0]+3, tPos[1]]];
+                                  [tPos[0]+2, tPos[1]], [tPos[0]+3, tPos[1]]];
             break;
         }
         break;
@@ -125,19 +125,19 @@ class Tetromino {
         switch (tetrominoState) {
           case 1:
             tetrominoPositions = [[tPos[0], tPos[1]+1], [tPos[0]+1, tPos[1]],
-                                [tPos[0]+1, tPos[1]+1], [tPos[0]+1, tPos[1]+2]];
+                                  [tPos[0]+1, tPos[1]+1], [tPos[0]+1, tPos[1]+2]];
             break;
           case 2:
             tetrominoPositions = [[tPos[0], tPos[1]+1], [tPos[0]+1, tPos[1]+1],
-                              [tPos[0]+1, tPos[1]+2], [tPos[0]+2, tPos[1]+1]];
+                                  [tPos[0]+1, tPos[1]+2], [tPos[0]+2, tPos[1]+1]];
             break;
           case 3:
             tetrominoPositions = [[tPos[0]+1, tPos[1]], [tPos[0]+1, tPos[1]+1],
-                              [tPos[0]+1, tPos[1]+2], [tPos[0]+2, tPos[1]+1]];
+                                  [tPos[0]+1, tPos[1]+2], [tPos[0]+2, tPos[1]+1]];
             break;
           case 4:
             tetrominoPositions = [[tPos[0], tPos[1]+1], [tPos[0]+1, tPos[1]],
-                              [tPos[0]+1, tPos[1]+1], [tPos[0]+2, tPos[1]+1]];
+                                  [tPos[0]+1, tPos[1]+1], [tPos[0]+2, tPos[1]+1]];
             break;
         }
         break;

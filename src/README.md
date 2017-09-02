@@ -71,6 +71,8 @@ This javascript file does create the html table where the emojies are displayed.
 #### Functions
 * constructor()
 * initializeGame()
+* getUsername()
+* setUsername()
 * startGame()
 * startNewGame()
 * isGameOver()
@@ -89,6 +91,9 @@ This javascript file does create the html table where the emojies are displayed.
 * moveLeft()
 * moveRight()
 * moveNormal()
+* moveFaster()
+* rotateTetromino()
+* moveAllWayDown()
 
 ### Tetromino.js
 ***Tetromino.js*** is the file that handles the functions for tetromino shapes
@@ -103,6 +108,7 @@ and rotations etc.
 * generateRandomNextType()
 * generateRandomEmoji()
 * nextTetromino(bottom)
+* sendNewHighScore()
 * checkIfRowFull()
 * reappearEmojies()
 * getNextTetrominoPositions()

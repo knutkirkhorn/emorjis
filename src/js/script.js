@@ -121,7 +121,8 @@ $(document).ready(function() {
       username = newUsername;
       Util.showElement("username-box");
       $("#username-text").text(username);
-      Util.hideElement("username-modal-overlay");
+      $("#username-modal").addClass("modal-fadeout");
+      $("#username-modal-overlay").fadeOut();
 
       const xmphttp = new XMLHttpRequest();
       xmphttp.open('POST', '/user');

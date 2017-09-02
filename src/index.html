@@ -32,7 +32,7 @@
           <span id="current-score">0</span>
         </div>
         <button id="change-game-state-button" class="red-button side-element"
-        type="button" name="button">Start Game</button>
+                type="button" name="button">Start Game</button>
       </div>
     </div>
 
@@ -53,7 +53,7 @@
     </div>
 
     <div id="pause-modal-overlay" class="modal-overlay hidden-element">
-      <div class="pause-modal modal">
+      <div id="pause-modal" class="modal">
         <div class="modal-head">
           <p>Game is paused</p>
         </div>
@@ -106,7 +106,7 @@
     </div>
 
     <div id="message-modal-overlay" class="modal-overlay hidden-element">
-      <div class="message-modal modal modal-round modal-spacious">
+      <div id="message-modal" class="modal modal-round modal-spacious">
         <div class="modal-message">
           <p><b>Game over</b></p>
           <span>Your score: </span>
@@ -117,12 +117,11 @@
     </div>
 
     <div id="username-modal-overlay" class="modal-overlay">
-      <div class="username-modal modal modal-round modal-spacious">
-
+      <div id="username-modal" class="modal modal-round modal-spacious">
         <div class="modal-body">
           <p>Select your username</p>
-          <input id="username-input" type="text" placeholder="Username" value="" maxlength="16">
-          <button id="select-username-button" class="red-button" type="button" name="button">Select username</button>
+          <input id="username-input" class="red-input" type="text" placeholder="Username" value="" maxlength="16">
+          <button id="select-username-button" class="red-button red-button-no-transition" type="button" name="button">Select username</button>
         </div>
       </div>
     </div>
