@@ -7,9 +7,10 @@ $(document).ready(function() {
     for (let i = 0; i < data.length; i++) {
       let newItem = "<tr>";
       newItem += "<td>" + (i+1) + ".</td>";
-      newItem += "<td>" + data[i].username + "</td>";
+      newItem += "<td></td>";
       newItem += "<td>" + data[i].score + "</td></tr>";
       $("#highscore-panel tbody").append(newItem);
+      $("#highscore-panel tbody td:nth(1)").text(data[i].username);
     }
   });
 
