@@ -63,6 +63,26 @@ body {
   outline: none;
 }
 
+#highscore-panel {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  text-align: center;
+}
+
+#highscore-panel table {
+  border-collapse: collapse;
+}
+
+#highscore-panel th {
+  padding: 7px;
+}
+
+#highscore-panel thead {
+  background-color: #f44141;
+  color: white
+}
+
 .modal-overlay {
   background-color: rgba(0, 0, 0, 0.5);
   position: absolute;

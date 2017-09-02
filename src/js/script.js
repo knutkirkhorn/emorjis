@@ -3,6 +3,16 @@ $(document).ready(function() {
   let isFastSpeed = false;
   let username;
 
+  $.get('/highscore', (data) => {
+    for (let i = 0; i < data.length; i++) {
+      let newItem = "<tr>";
+      newItem += "<td>" + (i+1) + ".</td>";
+      newItem += "<td>" + data[i].username + "</td>";
+      newItem += "<td>" + data[i].score + "</td></tr>";
+      $("#highscore-panel tbody").append(newItem);
+    }
+  });
+
   $("#change-game-state-button").click(function() {
     if (game.isStarted()) {
       if (game.isRunning()) {

@@ -42,6 +42,22 @@ app.post('/user/', (request, response) => {
   });
 });
 
+app.get('/highscore/', (request, response) => {
+  connection.query('SELECT score, username FROM Highscore JOIN Users ON(Highscore.user_id = Users.user_id) ORDER BY score DESC LIMIT 10', (error, result, fields) => {
+    if (!error && result.length !== 0) {
+      let jsonResponse = [];
+      for (let i = 0; i < result.length; i++) {
+        jsonResponse.push({
+          username: result[i].username,
+          score: result[i].score
+        });
+      }
+      //const jsonString = JSON.stingify(jsonResponse);
+      response.json(jsonResponse);
+    }
+  });
+});
+
 app.post('/highscore/', (request, response) => {
   const username = request.body.username;
   const score = request.body.score;
