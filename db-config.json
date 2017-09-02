@@ -2,5 +2,6 @@
   "host": "localhost",
   "user": "root",
   "password": "",
-  "database": "emorjis"
+  "database": "emorjis",
+  "port": "3306"
 }

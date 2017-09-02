@@ -14,7 +14,8 @@ let connection = mysql.createConnection({
   host: dbConfig.host,
   user: dbConfig.user,
   password: dbConfig.password,
-  database: dbConfig.database
+  database: dbConfig.database,
+  port: dbConfig.port
 });
 
 connection.connect( (error) => {
