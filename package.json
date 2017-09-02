@@ -24,7 +24,9 @@
   },
   "homepage": "https://github.com/Knutakir/emorjis#readme",
   "dependencies": {
+    "body-parser": "^1.17.2",
     "express": "^4.15.4",
+    "mysql": "^2.14.1",
     "ws": "^3.1.0"
   },
   "devDependencies": {

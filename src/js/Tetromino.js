@@ -306,11 +306,22 @@ class Tetromino {
       this.reappearEmojies();
     } else {
       Game.stopGame();
-      Util.showElement("message-modal-overlay")
+      Util.showElement("message-modal-overlay");
       $("#change-game-state-button").text("Start New Game");
-      $("#game-over-score").text(this.gameScore)
+      $("#game-over-score").text(this.gameScore);
+      this.sendNewHighScore();
     }
     return gameOver;
+  }
+
+  sendNewHighScore() {
+    const xmphttp = new XMLHttpRequest();
+    xmphttp.open('POST', '/highscore');
+    xmphttp.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
+    xmphttp.send(JSON.stringify({
+      username: Game.getUsername(),
+      score: this.gameScore
+    }));
   }
 
   checkIfRowFull() {

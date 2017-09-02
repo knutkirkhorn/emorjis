@@ -3,15 +3,15 @@ DROP TABLE IF EXISTS Users;
 
 CREATE TABLE Users(
   user_id INTEGER AUTO_INCREMENT,
-  name VARCHAR(16) NOT NULL,
+  username VARCHAR(16) NOT NULL,
   password VARCHAR(50) NOT NULL,
   PRIMARY KEY(user_id)
 );
 
 CREATE TABLE Highscore(
   score_id INTEGER AUTO_INCREMENT,
-  score INTEGER,
-  user_id INTEGER,
+  score INTEGER NOT NULL,
+  user_id INTEGER NOT NULL,
   PRIMARY KEY(score_id),
   FOREIGN KEY(user_id) REFERENCES Users(user_id)
 );

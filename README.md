@@ -7,6 +7,11 @@ All game files are found in [src](src).
 Fork this repository or download
 with: ```git clone https://github.com/Knutakir/emorjis```
 
+The server has stored its database configuration in the [db-config.json][db-config.json]
+file and it needs to be updated to the users correct database.
+The database script ([database.sql](database.sql)) needs to be run before starting the server aswell.
+
+Install dependencies with ```npm install```.
 Then run ```npm start```.
 
 Or if you dont want
