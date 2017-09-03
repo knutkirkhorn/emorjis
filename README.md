@@ -2,19 +2,14 @@
 Emoji Tetris 😎 made with javascript, mysql, express, css and html
 
 ## Installation
-Fork this repository or download
-with: ```git clone https://github.com/Knutakir/emorjis```
+```git clone https://github.com/Knutakir/emorjis```
 
 The server has stored its database configuration in the [db-config.json](db-config.json)
 file and it needs to be updated to the users correct database.
-The database script ([database.sql](database.sql)) needs to be run before starting the server aswell.
+The database script [database.sql](database.sql) needs to be run in a database before starting the server aswell.
 
 Install dependencies with ```npm install```.
 Then run ```npm start```.
-
-Or if you dont want
-an express server for the game, then navigate to the ***src***
-folder and run [index.html](src/index.html) in your webbrowser.
 
 ## Screenshot
 ![Preview](media/screenshot-1.png)
@@ -40,7 +35,7 @@ you get a score based of how high you are in the game board. You get a score of 
 in the table to move down multiplied with 10.
   * Example: move 7 rows down: 7 * 10 = 70
 * Clear rows. You get 100 base score multiplied with number of rows cleared powered.
-  * Example: 2 rows cleared = 100 * (2^(2)) = 400
+  * Example: 2 rows cleared = 100 * 2² = 400
 
 ## Documentation
 See [src/README.md](src/README.md) for a explenation of some of the code.
