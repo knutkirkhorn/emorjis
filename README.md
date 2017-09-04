@@ -11,7 +11,7 @@ The database script [database.sql](database.sql) needs to be run in a database b
 Install dependencies with ```npm install```.
 Then run ```npm start```.
 
-## Screenshot
+## Screenshots
 ![Preview](media/screenshot-1.png)
 
 ### Menu
@@ -29,13 +29,12 @@ Then run ```npm start```.
 
 ## Score system
 In emorjis you get score from:
-* Letting a tetromino drop all the way down, you only get a score of 10 with this.
-* Move a tetromino all the way down(triggered by pressing <kbd>Space</kbd>),
-you get a score based of how high you are in the game board. You get a score of number of rows
-in the table to move down multiplied with 10.
-  * Example: move 7 rows down: 7 * 10 = 70
+* Letting a tetromino drop all the way down, you only get a score of 10.
+* Move a tetromino all the way down(triggered by pressing <kbd>Space</kbd>).
+Score is calculated by how many rows you move down. The score is the number of rows to move down multiplied with 10.
+  * Example: move 7 rows down: 7 × 10 = 70
 * Clear rows. You get 100 base score multiplied with number of rows cleared powered.
-  * Example: 2 rows cleared = 100 * 2² = 400
+  * Example: 2 rows cleared = 100 × 2² = 400
 
 ## Documentation
 See [src/README.md](src/README.md) for a explenation of some of the code.
