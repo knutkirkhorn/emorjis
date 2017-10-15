@@ -2,14 +2,22 @@
 Emoji Tetris 😎 made with javascript, mysql, express, css and html
 
 ## Installation
-```git clone https://github.com/Knutakir/emorjis```
+```
+$ git clone https://github.com/Knutakir/emorjis
+```
 
 The server has stored its database configuration in the [db-config.json](db-config.json)
 file and it needs to be updated to the users correct database.
 The database script [database.sql](database.sql) needs to be run in a database before starting the server aswell.
 
-Install dependencies with ```npm install```.
-Then run ```npm start```.
+### Install dependencies 
+```
+$ npm install
+```
+### Run
+```
+$ npm start
+```
 
 ## Screenshots
 ![Preview](media/screenshot-1.png)
