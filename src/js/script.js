@@ -1,7 +1,29 @@
 $(document).ready(function() {
+  const socket = new WebSocket('ws://localhost:8080');
   const game = new Game();
   let isFastSpeed = false;
   let username;
+
+
+  socket.onerror = (error) => {
+
+  }
+
+  socket.onopen = (message) => {
+
+  }
+
+  socket.onmessage = (e) => {
+
+  }
+
+  socket.onclose = (message) => {
+
+  }
+
+  //TODO: cleanup this part
+
+
 
   $.get('/highscore', (data) => {
     for (let i = 0; i < data.length; i++) {
@@ -17,7 +39,7 @@ $(document).ready(function() {
   $("#change-game-state-button").click(function() {
     if (game.isStarted()) {
       if (game.isRunning()) {
-        game.pauseGame();
+        //game.pauseGame();
         Util.showElement("pause-modal-overlay");
         $(this).text("Resume Game");
       } else {
@@ -27,7 +49,7 @@ $(document).ready(function() {
       }
     } else {
       if (game.isGameOver()) {
-        game.startNewGame();
+        //game.startNewGame();
         $(this).text("Pause Game");
       } else {
         game.startGame();

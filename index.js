@@ -3,6 +3,9 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mysql = require('mysql');
 const dbConfig = require('./db-config.json');
+const game = require('./server/Game');
+const Tetromino = require('./server/Tetromino');
+const Util = require('./server/Util');
 
 const app = express();
 const wss = new WebSocket.Server({ port: 8080 });
