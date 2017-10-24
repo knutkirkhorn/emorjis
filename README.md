@@ -10,7 +10,7 @@ The server has stored its database configuration in the [db-config.json](db-conf
 file and it needs to be updated to the users correct database.
 The database script [database.sql](database.sql) needs to be run in a database before starting the server aswell.
 
-### Install dependencies 
+### Install dependencies
 ```
 $ npm install
 ```
@@ -45,7 +45,7 @@ Score is calculated by how many rows you move down. The score is the number of r
   * Example: 2 rows cleared = 100 × 2² = 400
 
 ## Documentation
-See [src/README.md](src/README.md) for a explenation of some of the code.
+See [doc/README.md](doc/README.md) for a explenation of some of the code.
 
 ## Licence
 MIT © Knut Kirkhorn
