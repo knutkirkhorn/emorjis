@@ -1,7 +1,7 @@
 const mysql = require('mysql');
+const dbConfig = require('./../../db-config.json');
 const express = require('express');
 const router = express.Router();
-const dbConfig = require('./../../db-config.json');
 
 let connection = mysql.createConnection({
   host: dbConfig.host,
@@ -19,7 +19,7 @@ connection.connect( (error) => {
   }
 });
 
-router.get('/', (req, res) => {
+router.get('/', (request, response) => {
   connection.query('SELECT score, username FROM Highscore JOIN Users ON(Highscore.user_id = Users.user_id) ORDER BY score DESC LIMIT 10', (error, result, fields) => {
     if (!error && result.length !== 0) {
       let jsonResponse = [];

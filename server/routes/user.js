@@ -1,5 +1,23 @@
+const mysql = require('mysql');
+const dbConfig = require('./../../db-config.json');
 const express = require('express');
 const router = express.Router();
+
+let connection = mysql.createConnection({
+  host: dbConfig.host,
+  user: dbConfig.user,
+  password: dbConfig.password,
+  database: dbConfig.database,
+  port: dbConfig.port
+});
+
+connection.connect( (error) => {
+  if (error) {
+    console.log(error);
+  } else {
+    console.log("Connected successfully to emorjis database");
+  }
+});
 
 router.post('/', (request, response) => {
   const username = request.body.username;

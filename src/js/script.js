@@ -4,21 +4,34 @@ $(document).ready(function() {
   let isFastSpeed = false;
   let username;
 
-
   socket.onerror = (error) => {
 
   }
 
   socket.onopen = (message) => {
-
+    socket.send("open");
   }
 
   socket.onmessage = (e) => {
-
+    console.log(e.data);
+    //TODO: switch different types of messages e.g.:
+    // * update of game array
   }
 
   socket.onclose = (message) => {
 
+  }
+
+  function pauseGame() {
+    //TODO: implement
+  }
+
+  function resumeGame() {
+    //TODO: implement
+  }
+
+  function newGame() {
+    //TODO: implement
   }
 
   //TODO: cleanup this part
@@ -37,90 +50,90 @@ $(document).ready(function() {
   });
 
   $("#change-game-state-button").click(function() {
-    if (game.isStarted()) {
-      if (game.isRunning()) {
-        //game.pauseGame();
-        Util.showElement("pause-modal-overlay");
-        $(this).text("Resume Game");
-      } else {
-        game.resumeGame();
-        Util.hideElement("pause-modal-overlay");
-        $(this).text("Pause Game");
-      }
-    } else {
-      if (game.isGameOver()) {
-        //game.startNewGame();
-        $(this).text("Pause Game");
-      } else {
-        game.startGame();
-        Util.showElement("next-tetromino-container");
-        Util.showElement("score-container");
-        $(this).text("Pause Game");
-      }
-    }
-    $(this).blur();
+    // if (game.isStarted()) {
+    //   if (game.isRunning()) {
+    //     //game.pauseGame();
+    //     Util.showElement("pause-modal-overlay");
+    //     $(this).text("Resume Game");
+    //   } else {
+    //     game.resumeGame();
+    //     Util.hideElement("pause-modal-overlay");
+    //     $(this).text("Pause Game");
+    //   }
+    // } else {
+    //   if (game.isGameOver()) {
+    //     //game.startNewGame();
+    //     $(this).text("Pause Game");
+    //   } else {
+    //     game.startGame();
+    //     Util.showElement("next-tetromino-container");
+    //     Util.showElement("score-container");
+    //     $(this).text("Pause Game");
+    //   }
+    // }
+    // $(this).blur();
   });
 
   $("body").keydown( (e) => {
-    if (game.isRunning()) {
-      //Spacebar key pressed
-      if (e.which === 32) {
-        game.moveAllWayDown();
-      }
-
-      switch (e.keyCode) {
-        case 27:
-          //Escape key pressed
-          if (game.isPaused()) {
-            game.resumeGame();
-            Util.hideElement("pause-modal-overlay");
-            $("#change-game-state-button").text("Pause Game");
-          } else {
-            game.pauseGame();
-            Util.showElement("pause-modal-overlay");
-            $("#change-game-state-button").text("Resume Game");
-          }
-          break;
-        case 37:
-          //Left key pressed
-          game.moveLeft();
-          break;
-        case 38:
-          //Up key pressed
-          game.rotateTetromino();
-          break;
-        case 39:
-          //Right key pressed
-          game.moveRight();
-          break;
-        case 40:
-          //Down key pressed
-          if (!isFastSpeed) {
-            isFastSpeed = true;
-            game.moveFaster();
-          }
-          break;
-      }
-    }
+    // if (game.isRunning()) {
+    //   //Spacebar key pressed
+    //   if (e.which === 32) {
+    //     game.moveAllWayDown();
+    //   }
+    //
+    //   switch (e.keyCode) {
+    //     case 27:
+    //       //Escape key pressed
+    //       if (game.isPaused()) {
+    //         game.resumeGame();
+    //         Util.hideElement("pause-modal-overlay");
+    //         $("#change-game-state-button").text("Pause Game");
+    //       } else {
+    //         game.pauseGame();
+    //         Util.showElement("pause-modal-overlay");
+    //         $("#change-game-state-button").text("Resume Game");
+    //       }
+    //       break;
+    //     case 37:
+    //       //Left key pressed
+    //       game.moveLeft();
+    //       break;
+    //     case 38:
+    //       //Up key pressed
+    //       game.rotateTetromino();
+    //       break;
+    //     case 39:
+    //       //Right key pressed
+    //       game.moveRight();
+    //       break;
+    //     case 40:
+    //       //Down key pressed
+    //       if (!isFastSpeed) {
+    //         isFastSpeed = true;
+    //         game.moveFaster();
+    //       }
+    //       break;
+    //   }
+    // }
   }).keyup(function(e) {
-    if (game.isRunning()) {
-      if (e.keyCode === 40) {
-        if (isFastSpeed) {
-          isFastSpeed = false;
-          game.moveNormal();
-        }
-      }
-    }
+    // if (game.isRunning()) {
+    //   if (e.keyCode === 40) {
+    //     if (isFastSpeed) {
+    //       isFastSpeed = false;
+    //       game.moveNormal();
+    //     }
+    //   }
+    // }
   });
 
   $("#resume-game-button").click( () => {
-    game.resumeGame();
+    // game.resumeGame();
     Util.hideElement("pause-modal-overlay");
     $("#change-game-state-button").text("Pause Game");
   });
 
   $("#start-new-game-button").click( () => {
-    game.startNewGame();
+    // game.startNewGame();
     Util.hideElement("pause-modal-overlay");
     $("#change-game-state-button").text("Pause Game");
   });
@@ -152,9 +165,10 @@ $(document).ready(function() {
       xmphttp.send(JSON.stringify({
         username: username
       }));
-      game.setUsername(username);
+      //game.setUsername(username);
     } else {
       alert("Your username can not be blank.");
+      //TODO: make custom alert box
     }
   });
 

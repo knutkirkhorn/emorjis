@@ -80,9 +80,16 @@ connection.connect( (error) => {
 
 wss.on('connection', function connection(ws) {
   ws.on('message', function incoming(message) {
+    console.log(message);
+  });
+  ws.send("hello");
 
+  ws.on('close', function() {
+    console.log("connection closed");
   });
 });
+
+
 
 app.listen(80, () => {
     console.log('emorjis running at port 80!');
