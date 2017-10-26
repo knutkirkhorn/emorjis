@@ -1,5 +1,5 @@
 import test from 'ava';
-import Util from './server/Util';
+import Util from './server/util';
 
 const arrayToCopy = [];
 for (let i = 0; i < 5; i++) {
