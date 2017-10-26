@@ -507,3 +507,5 @@ class Tetromino {
     this.nextTetromino(false);
   }
 }
+
+module.exports = Tetromino;

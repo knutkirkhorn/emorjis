@@ -178,3 +178,5 @@ class Game {
     currentTetromino.moveAllWayDown();
   }
 }
+
+module.exports = Game;
