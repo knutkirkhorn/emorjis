@@ -6,8 +6,8 @@ const dbConfig = require('./db-config.json');
 const game = require('./server/Game');
 const Tetromino = require('./server/Tetromino');
 const Util = require('./server/Util');
-const highscore = require('./server/routes/highscore.js');
-const user = require('./server/routes/user.js');
+const highscore = require('./server/routes/highscore');
+const user = require('./server/routes/user');
 
 const app = express();
 const wss = new WebSocket.Server({ port: 8080 });
@@ -33,6 +33,7 @@ wss.on('connection', function connection(ws) {
 
   ws.on('message', function incoming(message) {
     console.log(message);
+    //TODO: switch (GAME_STATE, game_movement)
   });
 
   ws.on('close', function() {
