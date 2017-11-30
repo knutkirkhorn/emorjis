@@ -48,4 +48,4 @@ Score is calculated by how many rows you move down. The score is the number of r
 See [doc/README.md](doc/README.md) for a explenation of some of the code.
 
 ## Licence
-MIT © Knut Kirkhorn
+MIT © [Knut Kirkhorn](LICENSE)
