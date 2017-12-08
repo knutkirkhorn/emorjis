@@ -199,7 +199,7 @@ class Tetromino {
 
       const row = tetrominoPositions[i][0] + 1;
       const column = tetrominoPositions[i][1] + 1;
-      if (Util.getTableCell("game-board", row, column).hasClass('occupied-cell')) {
+      if (Util.getTableCell('game-board', row, column).hasClass('occupied-cell')) {
         blocked = true;
       }
     }
@@ -227,9 +227,9 @@ class Tetromino {
         tempTetrominoPositions2[i][0]++;
         const column = tempTetrominoPositions2[i][1] + 1;
         const row = tempTetrominoPositions2[i][0] + 1;
-        const tableCell = Util.getTableCell("game-board", row, column);
+        const tableCell = Util.getTableCell('game-board', row, column);
 
-        if (tableCell.hasClass("occupied-cell")) {
+        if (tableCell.hasClass('occupied-cell')) {
           notFoundBottom = false;
         }
 
@@ -246,7 +246,7 @@ class Tetromino {
     for (let i = 0; i < tempTetrominoPositions.length; i++) {
       const column = tempTetrominoPositions[i][1] + 1;
       const row = tempTetrominoPositions[i][0] + 1;
-      Util.getTableCell("game-board", row, column).addClass("bottom-drop-place");
+      Util.getTableCell('game-board', row, column).addClass('bottom-drop-place');
     }
   }
 
@@ -271,11 +271,11 @@ class Tetromino {
       gameArray[row][column] = EMOJIES.indexOf(currentEmojiType);
     }
 
-    $(".current-tetromino").each(function() {
+    $('.current-tetromino').each(function() {
       $(this)
-        .removeClass("current-tetromino")
-        .addClass("occupied-cell")
-        .removeClass("empty-cell");
+        .removeClass('current-tetromino')
+        .addClass('occupied-cell')
+        .removeClass('empty-cell');
     });
 
     this.checkIfRowFull();
@@ -306,9 +306,9 @@ class Tetromino {
       this.reappearEmojies();
     } else {
       Game.stopGame();
-      Util.showElement("message-modal-overlay");
-      $("#change-game-state-button").text("Start New Game");
-      $("#game-over-score").text(this.gameScore);
+      Util.showElement('message-modal-overlay');
+      $('#change-game-state-button').text('Start New Game');
+      $('#game-over-score').text(this.gameScore);
       this.sendNewHighScore();
     }
     return gameOver;
@@ -352,12 +352,12 @@ class Tetromino {
   }
 
   reappearEmojies() {
-    $(".bottom-drop-place").each(function() {
-      $(this).removeClass("bottom-drop-place");
+    $('.bottom-drop-place').each(function() {
+      $(this).removeClass('bottom-drop-place');
     });
 
-    $(".occupied-cell").each(function() {
-      $(this).removeClass("occupied-cell").html("").addClass("empty-cell");
+    $('.occupied-cell').each(function() {
+      $(this).removeClass('occupied-cell').html('').addClass('empty-cell');
     });
 
     for (let i = 0; i < gameArray.length; i++) {
@@ -365,8 +365,8 @@ class Tetromino {
         const currentValue = gameArray[i][j];
         if (currentValue >= 0) {
           //Add emoji to table
-          Util.getTableCell("game-board", i+1, j+1)
-            .addClass("occupied-cell")
+          Util.getTableCell('game-board', i+1, j+1)
+            .addClass('occupied-cell')
             .html(EMOJIES[currentValue]);
         }
       }
@@ -376,21 +376,21 @@ class Tetromino {
       const row = tetrominoPositions[i][0] + 1;
       const column = tetrominoPositions[i][1] + 1;
 
-      Util.getTableCell("game-board", row, column)
-        .addClass("current-tetromino")
+      Util.getTableCell('game-board', row, column)
+        .addClass('current-tetromino')
         .html(currentEmojiType);
       gameArray[row-1][column-1] = -2;
     }
     this.makeDropFocus();
 
-    $("#current-score").text(this.gameScore);
+    $('#current-score').text(this.gameScore);
 
     let nextPositions = this.getNextTetrominoPositions();
     for (let i = 0; i < nextPositions.length; i++) {
       const row = nextPositions[i][0] + 1;
       const column = nextPositions[i][1] + 1;
-      Util.getTableCell("next-tetromino", row, column)
-        .addClass("occupied-cell").html(nextEmojiType);
+      Util.getTableCell('next-tetromino', row, column)
+        .addClass('occupied-cell').html(nextEmojiType);
     }
   }
 
@@ -440,7 +440,7 @@ class Tetromino {
       }
     }
 
-    $(".current-tetromino").each(function() {
+    $('.current-tetromino').each(function() {
       if (toRight) {
         if ($(this).next().hasClass('occupied-cell')) {
           isAtEnd = true;
@@ -483,10 +483,10 @@ class Tetromino {
         tempTetrominoPositions2[j][0]++;
         const column = tempTetrominoPositions2[j][1] + 1;
         const row = tempTetrominoPositions2[j][0] + 1;
-        const tableCell = Util.getTableCell("game-board", row, column);
+        const tableCell = Util.getTableCell('game-board', row, column);
 
         if (tableCell.attr('class') === undefined ||
-            tableCell.hasClass("occupied-cell")) {
+            tableCell.hasClass('occupied-cell')) {
           notFoundBottom = false;
           if (scoreMultiplier === 16) {
             scoreMultiplier = i;

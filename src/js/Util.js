@@ -1,7 +1,7 @@
 class Util {
   static removeCurrentEmojies() {
-    $(".current-tetromino").each(function() {
-      $(this).removeClass("current-tetromino").html("");
+    $('.current-tetromino').each(function() {
+      $(this).removeClass('current-tetromino').html('');
     });
 
     $(".bottom-drop-place").each(function() {
@@ -10,14 +10,14 @@ class Util {
   }
 
   static getTableCell(table, row, column) {
-    return $("#" + table + " tr:nth-child(" + row + ") td:nth-child(" + column + ")");
+    return $('#' + table + ' tr:nth-child(' + row + ') td:nth-child(' + column + ')');
   }
 
   static hideElement(elementName) {
-    $("#" + elementName).addClass("hidden-element");
+    $('#' + elementName).addClass('hidden-element');
   }
 
   static showElement(elementName) {
-    $("#" + elementName).removeClass("hidden-element");
+    $('#' + elementName).removeClass('hidden-element');
   }
 }

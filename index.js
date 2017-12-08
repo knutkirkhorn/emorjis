@@ -13,6 +13,7 @@ const app = express();
 const wss = new WebSocket.Server({ port: 8080 });
 
 app.use(bodyParser.json());
+//TODO: rename the folder 'src' to 'client'
 app.use(express.static(__dirname + '/src'));
 
 //Setup routes

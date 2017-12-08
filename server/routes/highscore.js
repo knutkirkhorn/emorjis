@@ -15,7 +15,7 @@ connection.connect( (error) => {
   if (error) {
     console.log(error);
   } else {
-    console.log("Connected successfully to emorjis database");
+    console.log("Connected successfully to highscore database");
   }
 });
 

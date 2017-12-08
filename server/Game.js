@@ -50,6 +50,7 @@ class Game {
     this.startGame();
   }
 
+  //TODO: check if all of these is needed
   isGameOver() {
     return (currentGameState === GAME_STATE.STOPPED);
   }
@@ -82,7 +83,7 @@ class Game {
     intervalClock = setInterval(this.tickClock, DEFAULT_GAME_SPEED);
   }
 
-  generateGameBoard() {
+/*  generateGameBoard() {
     let gridRow = "<tr>";
     for (let i = 0; i < BOARD_WIDTH; i++) {
       gridRow += '<td class="empty-cell"></td>';
@@ -108,7 +109,7 @@ class Game {
     for (let i = 0; i < 4; i++) {
       $("#next-tetromino").append(gridRow);
     }
-  }
+  }*/
 
   static checkIfOnBottomOrOccupied() {
     let isBottomOrOccupied = false;

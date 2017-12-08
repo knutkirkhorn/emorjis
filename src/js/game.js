@@ -23,14 +23,14 @@ class Game {
   }
 
   generateGameBoard() {
-    let gridRow = "<tr>";
+    let gridRow = '<tr>';
     for (let i = 0; i < BOARD_WIDTH; i++) {
       gridRow += '<td class="empty-cell"></td>';
     }
-    gridRow += "</tr>";
+    gridRow += '</tr>';
 
     for (let i = 0; i < BOARD_HEIGHT; i++) {
-      $("#game-board").append(gridRow);
+      $('#game-board').append(gridRow);
     }
   }
 }

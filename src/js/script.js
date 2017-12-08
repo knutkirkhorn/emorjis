@@ -40,16 +40,16 @@ $(document).ready(function() {
 
   $.get('/highscore', (data) => {
     for (let i = 0; i < data.length; i++) {
-      let newItem = "<tr>";
-      newItem += "<td>" + (i+1) + ".</td>";
-      newItem += "<td></td>";
-      newItem += "<td>" + data[i].score + "</td></tr>";
-      $("#highscore-panel tbody").append(newItem);
-      $("#highscore-panel tbody td:nth(1)").text(data[i].username);
+      let newItem = '<tr>';
+      newItem += '<td>' + (i+1) + '.</td>';
+      newItem += '<td></td>';
+      newItem += '<td>' + data[i].score + '</td></tr>';
+      $('#highscore-panel tbody').append(newItem);
+      $('#highscore-panel tbody td:nth(1)').text(data[i].username);
     }
   });
 
-  $("#change-game-state-button").click(function() {
+  $('#change-game-state-button').click(function() {
     // if (game.isStarted()) {
     //   if (game.isRunning()) {
     //     //game.pauseGame();
@@ -74,7 +74,7 @@ $(document).ready(function() {
     // $(this).blur();
   });
 
-  $("body").keydown( (e) => {
+  $('body').keydown( (e) => {
     // if (game.isRunning()) {
     //   //Spacebar key pressed
     //   if (e.which === 32) {
@@ -126,38 +126,38 @@ $(document).ready(function() {
     // }
   });
 
-  $("#resume-game-button").click( () => {
+  $('#resume-game-button').click( () => {
     // game.resumeGame();
-    Util.hideElement("pause-modal-overlay");
-    $("#change-game-state-button").text("Pause Game");
+    Util.hideElement('pause-modal-overlay');
+    $('#change-game-state-button').text('Pause Game');
   });
 
   $("#start-new-game-button").click( () => {
     // game.startNewGame();
-    Util.hideElement("pause-modal-overlay");
-    $("#change-game-state-button").text("Pause Game");
+    Util.hideElement('pause-modal-overlay');
+    $('#change-game-state-button').text('Pause Game');
   });
 
-  $("#game-over-button").click( () => {
-    Util.hideElement("message-modal-overlay");
+  $('#game-over-button').click( () => {
+    Util.hideElement('message-modal-overlay');
   });
 
-  $("#show-controls-button").click( () => {
-    Util.showElement("controls-modal-overlay");
+  $('#show-controls-button').click( () => {
+    Util.showElement('controls-modal-overlay');
   });
 
-  $("#hide-controls").click( () => {
-    Util.hideElement("controls-modal-overlay");
+  $('#hide-controls').click( () => {
+    Util.hideElement('controls-modal-overlay');
   });
 
-  $("#select-username-button").click( () => {
-    const newUsername = $("#username-input").val();
+  $('#select-username-button').click( () => {
+    const newUsername = $('#username-input').val();
     if (newUsername) {
       username = newUsername;
-      Util.showElement("username-box");
-      $("#username-text").text(username);
-      $("#username-modal").addClass("modal-fadeout");
-      $("#username-modal-overlay").fadeOut();
+      Util.showElement('username-box');
+      $('#username-text').text(username);
+      $('#username-modal').addClass('modal-fadeout');
+      $('#username-modal-overlay').fadeOut();
 
       const xmphttp = new XMLHttpRequest();
       xmphttp.open('POST', '/user');
@@ -167,15 +167,15 @@ $(document).ready(function() {
       }));
       //game.setUsername(username);
     } else {
-      alert("Your username can not be blank.");
+      alert('Your username can not be blank.');
       //TODO: make custom alert box
     }
   });
 
-  $("#username-input").keyup( (e) => {
+  $('#username-input').keyup( (e) => {
     //Enter key pressed
     if (e.keyCode === 13) {
-      $("#select-username-button").click();
+      $('#select-username-button').click();
     }
   });
 });
