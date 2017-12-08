@@ -15,7 +15,7 @@ connection.connect( (error) => {
   if (error) {
     console.log(error);
   } else {
-    console.log("Connected successfully to highscore database");
+    console.log('Connected successfully to highscore database');
   }
 });
 
@@ -44,7 +44,7 @@ router.post('/', (request, response) => {
 
       connection.query('INSERT INTO Highscore(score, user_id) VALUES(?, ?)', [score, userId], (error, result, fields) => {
         if (!error) {
-          response.send("New highscore added");
+          response.send('New highscore added');
         } else {
           response.sendStatus(404);
         }

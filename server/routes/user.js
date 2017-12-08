@@ -15,7 +15,7 @@ connection.connect( (error) => {
   if (error) {
     console.log(error);
   } else {
-    console.log("Connected successfully to user database");
+    console.log('Connected successfully to user database');
   }
 });
 
@@ -24,11 +24,11 @@ router.post('/', (request, response) => {
 
   connection.query('SELECT * FROM Users WHERE username = ?', [username], (error, result, fields) => {
     if (!error && result.length !== 0) {
-      response.send("Username already exist");
+      response.send('Username already exist');
     } else {
       connection.query('INSERT INTO Users(username, password) VALUES(?, "TODO")', [username], (error, result, fields) => {
         if (!error) {
-          response.send("New username added");
+          response.send('New username added');
         } else {
           response.sendStatus(404);
         }

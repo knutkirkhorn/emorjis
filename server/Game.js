@@ -113,23 +113,26 @@ class Game {
 
   static checkIfOnBottomOrOccupied() {
     let isBottomOrOccupied = false;
+    //TODO: implement new better method made for backend
+    /*
 
-    $(".current-tetromino").each(function() {
-      const column = $(this).index();
+        $(".current-tetromino").each(function() {
+          const column = $(this).index();
 
-      //Check if the brick is on the bottom
-      if ($($(this).parent().next().children()[column]).attr('class') === undefined) {
-        isBottomOrOccupied = true;
-        return true;
-      }
+          //Check if the brick is on the bottom
+          if ($($(this).parent().next().children()[column]).attr('class') === undefined) {
+            isBottomOrOccupied = true;
+            return true;
+          }
 
-      //check if there is an occupied-cell under the current tetromino
-      if ($($(this).parent().next().children()[column]).attr('class').includes('occupied-cell')) {
-        isBottomOrOccupied = true;
-        return true;
-      }
-    });
-    return isBottomOrOccupied;
+          //check if there is an occupied-cell under the current tetromino
+          if ($($(this).parent().next().children()[column]).attr('class').includes('occupied-cell')) {
+            isBottomOrOccupied = true;
+            return true;
+          }
+        });
+        return isBottomOrOccupied;
+        */
   }
 
   tickClock() {
