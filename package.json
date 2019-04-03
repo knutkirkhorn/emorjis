@@ -24,12 +24,12 @@
   },
   "homepage": "https://github.com/Knutakir/emorjis#readme",
   "dependencies": {
-    "body-parser": "^1.18.2",
-    "express": "^4.16.2",
-    "mysql": "^2.15.0",
-    "ws": "^3.2.0"
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "mysql": "^2.16.0",
+    "ws": "^3.3.3"
   },
   "devDependencies": {
-    "ava": "^0.21.0"
+    "ava": "^1.4.1"
   }
 }

@@ -7,6 +7,8 @@ const dbConfig = require('./db-config.json');
 const app = express();
 const wss = new WebSocket.Server({ port: 8080 });
 
+const serverPort = 8081;
+
 app.use(bodyParser.json());
 app.use(express.static(__dirname + '/src'));
 
@@ -86,6 +88,6 @@ wss.on('connection', function connection(ws) {
   });
 });
 
-app.listen(80, () => {
-    console.log('emorjis running at port 80!');
+app.listen(serverPort, () => {
+    console.log(`emorjis running at port ${serverPort}!`);
 });
