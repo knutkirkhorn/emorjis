@@ -1,5 +1,5 @@
-import test from 'ava';
-import Util from './src/js/Util';
+const test = require('ava');
+const Util = require('./src/js/Util');
 
 const arrayToCopy = [];
 for (let i = 0; i < 5; i++) {
