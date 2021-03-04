@@ -1,4 +1,4 @@
-# emorjis [![Build Status](https://travis-ci.org/Knutakir/emorjis.svg?branch=master)](https://travis-ci.org/Knutakir/emorjis) [![dependencies Status](https://david-dm.org/knutakir/emorjis/status.svg)](https://david-dm.org/knutakir/emorjis)
+# emorjis [![Build Status](https://travis-ci.org/Knutakir/emorjis.svg?branch=main)](https://travis-ci.org/Knutakir/emorjis) [![dependencies Status](https://david-dm.org/knutakir/emorjis/status.svg)](https://david-dm.org/knutakir/emorjis)
 Emoji Tetris 😎 made with javascript, mysql, express, css and html
 
 ## Installation
