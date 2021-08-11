@@ -27,7 +27,7 @@
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
     "mysql": "^2.16.0",
-    "ws": "^3.3.3"
+    "ws": "^5.2.3"
   },
   "devDependencies": {
     "ava": "^3.5.0"
