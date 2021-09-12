@@ -1,9 +1,9 @@
-# emorjis [![Build Status](https://travis-ci.org/Knutakir/emorjis.svg?branch=main)](https://travis-ci.org/Knutakir/emorjis) [![dependencies Status](https://david-dm.org/knutakir/emorjis/status.svg)](https://david-dm.org/knutakir/emorjis)
+# emorjis [![Build Status](https://travis-ci.org/knutkirkhorn/emorjis.svg?branch=main)](https://travis-ci.org/knutkirkhorn/emorjis) [![dependencies Status](https://david-dm.org/knutkirkhorn/emorjis/status.svg)](https://david-dm.org/knutkirkhorn/emorjis)
 Emoji Tetris 😎 made with javascript, mysql, express, css and html
 
 ## Installation
 ```
-$ git clone https://github.com/Knutakir/emorjis
+$ git clone https://github.com/knutkirkhorn/emorjis
 ```
 
 The server has stored its database configuration in the [db-config.json](db-config.json)
